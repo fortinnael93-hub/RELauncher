@@ -1,0 +1,80 @@
+body {
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: transparent;
+    color: #9F9FA0;
+    font-family: Inter, Open Sans, Segoe UI, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 12px;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-feature-settings: "pnum";
+    font-variant-numeric: proportional-nums;
+}
+
+#content {
+    position: relative;
+    background: #0C0C10;
+    height: 100%;
+    user-select: none;
+    -webkit-user-select: none;
+    border-radius: 12px;
+}
+
+.progress-container {
+	display: flex;
+	flex-direction: column; 
+	align-items: flex-start;
+	padding: 2rem;
+	font-weight:bold;
+	color: white;
+}
+
+.progress-header {
+	display: flex;
+	width: 100%; 
+	justify-content: space-between;
+	align-items: center; 
+}
+
+.progress-bar {
+	background: #26262A;
+	height: 10px;
+	margin-top: 1rem;
+	width: 100%; 
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.progress-fill {
+	background: #5F77FF;
+	height: 100%;
+	width: 0%;
+}
+
+#progress-percent {
+	color:rgba(255, 255, 255, 0.75);
+}
+.infobox{
+	padding:2rem;
+	color:white;
+	text-align:center;
+}
+.infobox a{
+	color:white;
+	font-weight:bold;
+	text-decoration: none;
+}
+.infobox button{
+   cursor: pointer;
+    background: #1e3467;
+    color: #ffffff;
+    border-radius: 6px;
+    text-align: center;
+    gap: 12px;
+    font-weight:bold;
+    border: 0;
+    padding: 16px 64px;
+}

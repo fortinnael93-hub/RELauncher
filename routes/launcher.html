@@ -1,0 +1,89 @@
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="../style/style.css"
+  media="screen"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="../style/launcher.css"
+  media="screen"
+/>
+<main id="content">
+  <section id="messageBox" class="messageBox">
+    <div></div>
+    <p id="alerteMessage"></p>
+  </section>
+  <section id="news"></section>
+  <aside>
+    <section>
+      <div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          viewBox="0 0 14 14"
+          fill="none"
+        >
+          <circle
+            cx="7"
+            cy="7"
+            r="5.5"
+            fill="#00FF85"
+            stroke="#5B987B"
+            stroke-width="3"
+          />
+        </svg>
+        <span id="totalPlayers"></span>
+        <span data-translate>joueurs connectés</span>
+      </div>
+      <section id="linkUpdate"></section>
+    </section>
+    <h1>NationsGlory</h1>
+    <aside>
+      <section>
+        <select name="versions" id="versions"></select>
+      </section>
+      <section id="modpackSection">
+        <select name="modpacks" id="modpacks">
+          <option value="none" data-bg="">— Aucun modpack —</option>
+          <option value="optifine" data-bg="../images/bg_optifine.jpg">
+            OptiFine HD
+          </option>
+          <option value="fabric" data-bg="../images/bg_fabric.jpg">
+            Fabric + Mods
+          </option>
+          <option value="sodium" data-bg="../images/bg_sodium.jpg">
+            Sodium Performance
+          </option>
+          <option value="faithful" data-bg="../images/bg_faithful.jpg">
+            Faithful x32
+          </option>
+          <option value="pvp" data-bg="../images/bg_pvp.jpg">PvP Pack</option>
+        </select>
+        <div id="modpackBadge" class="modpack-badge hidden">
+          <img src="../images/Icon_zip.png" alt="" />
+          <span id="modpackLabel">Aucun</span>
+        </div>
+      </section>
+      <button id="actionButton" onclick="launchGame()" data-translate>
+        Lancer
+      </button>
+      <div id="progression" style="display: none">
+        <aside>
+          <div><div id="progressPercent" style="width: 0"></div></div>
+          <span id="progressText"></span>
+        </aside>
+        <p id="progressSize"></p>
+      </div>
+      <p>
+        <span data-translate>Version</span>
+        <span id="version">1.2.0.46228</span>
+      </p>
+    </aside>
+  </aside>
+</main>
+<script src="../js/functions.js"></script>
+<script src="../js/launcher.js"></script>
+<script src="../js/modpacks.js"></script>

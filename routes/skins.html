@@ -1,0 +1,45 @@
+<link rel="stylesheet" type="text/css" href="../style/style.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="../style/settings.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="../style/skins.css" media="screen"/>
+<header id="headerSettings">
+    <h2 data-translate>Paramètres</h2>
+</header>
+<nav id="sidebar">
+    <ul>
+        <li onclick="ChangeRoute('settings')" data-translate>Paramètres</li>
+        <li onclick="ChangeRoute('skins')" class="active" data-translate>Skins</li>
+        <li onclick="ChangeRoute('accounts')" data-translate>Comptes</li>
+        <li onclick="ChangeRoute('resourcepacks')" data-translate>Packs de ressources</li>
+        <li onclick="ChangeRoute('shaderpacks')" data-translate>Packs de shaders</li>
+        <li onclick="ChangeRoute('screenshots')" data-translate>Screenshots</li>
+        <li onclick="ChangeRoute('console')" data-translate>Console</li>
+        <li onclick="ChangeRoute('crashreports')" data-translate>Rapports de crash</li>
+        <li onclick="ChangeRoute('about')" data-translate>À propos</li>
+        <li onclick="logout()" data-translate>Déconnexion</li>
+    </ul>
+</nav>
+<main id="skins">
+    <div id="display">
+        <img src="" id="skin">
+    </div>
+    <div id="skinsBlock">
+        <h2 data-translate>Modification du skin</h2>
+        <p data-translate>Le fichier doit être au format .png et conforme au modèle "Steve" de Minecraft, avec une résolution ne dépassant pas 128x128px.
+            <div id="dropZone" class="dropzone">
+                <img src="../images/Icon_Upload.png" alt=""/>
+                <span data-translate>Glisse ton fichier PNG ici...</span>
+                <input type="file" id="fileInput" accept=".png" multiple>
+            </div>
+            <h3 data-translate>Skins sauvegardés</h3>
+            <aside id="messageBox" class="messageBox error">
+                <div></div>
+                <p id="loginErrorMessage"></p>
+            </aside>
+            <ul id="skinsList">
+                Loading...
+            </ul>
+        </div>
+    </main>
+    <script src="../js/functions.js" async></script>
+    <script src="../js/utils.js" async></script>
+    <script src="../js/skins.js" async></script>

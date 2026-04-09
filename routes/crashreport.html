@@ -1,0 +1,34 @@
+<link rel="stylesheet" type="text/css" href="../style/style.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="../style/settings.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="../style/crashreport.css" media="screen"/>
+<header id="headerSettings">
+	<h2 data-translate>Paramètres</h2>
+</header>
+<nav id="sidebar">
+	<ul>
+		<li onclick="ChangeRoute('settings')" data-translate>Paramètres</li>
+		<li onclick="ChangeRoute('skins')" data-translate>Skins</li>
+		<li onclick="ChangeRoute('accounts')" data-translate>Comptes</li>
+		<li onclick="ChangeRoute('resourcepacks')" data-translate>Packs de ressources</li>
+		<li onclick="ChangeRoute('shaderpacks')" data-translate>Packs de shaders</li>
+		<li onclick="ChangeRoute('screenshots')" data-translate>Screenshots</li>
+		<li onclick="ChangeRoute('console')" data-translate>Console</li>
+		<li onclick="ChangeRoute('crashreports')" data-translate>Rapports de crash</li>
+		<li onclick="ChangeRoute('about')" data-translate>À propos</li>
+		<li onclick="logout()" data-translate>Déconnexion</li>
+	</ul>
+</nav>
+<main id="settings">
+	<h2 data-translate>Un crash vient de survenir !</h2>
+	<p data-translate>Recherche d'une solution dans la base de donnée du support.</p>
+	<div id="soluce">Recherche d'une solution....</div>
+	<h2 data-translate>Rapport de Crash à communiquer au support.</h2>
+	<br/>
+	<div id="block" class="selectable">
+	</div>
+	<button class="contact-support" onclick="getExternalLink('https://nationsglory.fr/support');">Contacter le support</button>
+	<div id="pastebin"></div>
+</main>
+<script src="../js/functions.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/crashreport.js"></script>

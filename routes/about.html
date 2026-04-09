@@ -1,0 +1,61 @@
+<link rel="stylesheet" type="text/css" href="../style/style.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="../style/settings.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="../style/about.css" media="screen"/>
+<header id="headerSettings">
+	<h2>Paramètres</h2>
+</header>
+<nav id="sidebar">
+	<ul>
+		<li onclick="ChangeRoute('settings')" data-translate>Paramètres</li>
+		<li onclick="ChangeRoute('skins')" data-translate>Skins</li>
+		<li onclick="ChangeRoute('accounts')" data-translate>Comptes</li>
+		<li onclick="ChangeRoute('resourcepacks')" data-translate>Packs de ressources</li>
+		<li onclick="ChangeRoute('shaderpacks')" data-translate>Packs de shaders</li>
+		<li onclick="ChangeRoute('screenshots')" data-translate>Screenshots</li>
+		<li onclick="ChangeRoute('console')" data-translate>Console</li>
+		<li onclick="ChangeRoute('crashreports')" data-translate>Rapports de crash</li>
+		<li onclick="ChangeRoute('about')" class="active" data-translate>À propos</li>
+		<li onclick="logout()" data-translate>Déconnexion</li>
+	</ul>
+</nav>
+<main id="settings">
+	<h2 data-translate>À propos</h2>
+	<p data-translate>Contrat d'utilisation relatif à l'application</p>
+	<div id="block" class="selectable">
+		<p>Dernière mise à jour : 28 octobre 2023</p>
+
+		<p><strong>Interprétation et Définitions</strong></p>
+		<p><strong>Interprétation</strong></p>
+		<p>Les mots dont la lettre initiale est en majuscule ont des significations définies dans les conditions suivantes. Les définitions suivantes auront la même signification qu'elles apparaissent au singulier ou au pluriel.</p>
+
+		<p><strong>Définitions</strong></p>
+		<p>Aux fins de ce Contrat de Licence d'Utilisateur Final :</p>
+		<ul>
+			<li>« Accord » désigne ce Contrat de Licence d'Utilisateur Final qui forme l'ensemble de l'accord entre Vous et la Société concernant l'utilisation de l'Application.</li>
+			<li>« Application » désigne le programme logiciel fourni par la Société que Vous avez téléchargé sur un Appareil, nommé NationsGlory.</li>
+			<li>« Société » (désignée soit par « la Société », soit par « Nous », « Notre » ou « Nos » dans cet Accord) fait référence à WebNations.</li>
+			<li>« Contenu » désigne le contenu tel que textes, images ou autres informations pouvant être publiées, téléchargées, liées ou autrement rendues disponibles par Vous, quelle que soit la forme de ce contenu.</li>
+			<li>« Pays » fait référence à : France</li>
+			<li>« Appareil » désigne tout appareil pouvant accéder à l'Application, tel qu'un ordinateur, un téléphone portable ou une tablette numérique.</li>
+			<li>« Services de tiers » désigne tout service ou contenu (y compris les données, informations, applications et autres produits services) fournis par un tiers pouvant être affichés, inclus ou mis à disposition par l'Application.</li>
+			<li>« Vous » désigne la personne accédant ou utilisant l'Application ou la société ou autre entité légale pour le compte de laquelle cette personne accède ou utilise l'Application, selon le cas.</li>
+		</ul>
+
+		<p><strong>Reconnaissance</strong></p>
+		<p>En cliquant sur le bouton « J'accepte », en téléchargeant ou en utilisant l'Application, Vous acceptez d'être lié par les termes et conditions de ce Contrat. Si Vous n'acceptez pas les termes de ce Contrat, ne cliquez pas sur le bouton « J'accepte », ne téléchargez pas et n'utilisez pas l'Application.</p>
+		<p>Cet Accord est un document légal entre Vous et la Société et régit votre utilisation de l'Application mise à votre disposition par la Société.</p>
+		<p>L'Application est concédée sous licence, et non vendue, à Vous par la Société pour une utilisation strictement conforme aux termes de ce Contrat.</p>
+
+		<p><strong>Licence</strong></p>
+		<p><strong>Portée de la Licence</strong></p>
+		<p>La Société Vous accorde une licence révocable, non exclusive, non transférable, limitée pour télécharger, installer et utiliser l'Application strictement en accord avec les termes de ce Contrat.</p>
+		<p>La licence accordée à Vous par la Société est uniquement à des fins personnelles et non commerciales et doit être utilisée strictement en conformité avec les termes de ce Contrat.</p>
+
+		<p><strong>Services de Tiers</strong></p>
+		<p>L'Application peut afficher, inclure ou rendre disponibles des contenus tiers (y compris des données, des informations, des applications et d'autres produits services) ou fournir des liens vers des sites Web ou services tiers.</p>
+		<p>Vous reconnaissez et acceptez que la Société ne soit pas responsable de tout Service de tiers, y compris leur exactitude, exhaustivité, actualité, validité, respect des droits d'auteur, légalité, décence, qualité ou tout autre aspect. La Société ne garantit pas et n'assume aucune responsabilité pour tout Service de tiers.</p>
+		<p>Les Services de tiers et les liens vers eux sont fournis uniquement en tant que commodité pour Vous et Vous accédez et les utilisez entièrement à vos propres risques et sous réserve des conditions d'utilisation et des politiques de confidentialité des tiers concernés.</p>
+	</div>
+</main>
+<script src="../js/functions.js" async></script>
+<script src="../js/utils.js" async></script>

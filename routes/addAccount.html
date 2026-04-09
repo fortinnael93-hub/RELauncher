@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title data-translate>Ajouter un compte</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../style/login.css" media="screen"/>
+    <script src="../js/functions.js" async></script>
+    <script src="../js/addAccount.js" async></script>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline'; connect-src https://authserver.nationsglory.fr">
+</head>
+<body>
+    <header id="header">
+        <div>&nbsp;</div>
+        <ul>
+            <li><button onclick="closeModalWindow()"><img src="../images/icon_close.png" alt="Fermer" data-translate/></button></li>
+        </ul>
+    </header>
+    <main id="login">
+        <section>
+            <img src="../images/Logo.svg" alt=""/>
+            <h1>NationsGlory</h1>
+        </section>
+        <form action="#">
+            <aside id="messageBox" class="messageBox error">
+                <div></div>
+                <p id="loginErrorMessage"></p>
+            </aside>
+            <div>
+                <h2 data-translate>Ajouter un compte</h3>
+                    <p data-translate>Entre tes identifiants pour ajouter ton compte</p>
+                    <label for="email" data-translate>Adresse E-mail</label>
+                    <input type="text" value="" name="email" id="email" data-translate placeholder="Entrez votre adresse e-mail"/>
+                </div>
+                <div>
+                    <label for="password" data-translate>Mot de passe</label>
+                    <input type="password" value="" name="password" id="password" data-translate placeholder="Entrez votre mot de passe"/>
+                </div>
+                <div>
+                    <span data-translate>Mot de passe oublié ?</span>
+                    <a href="#" title="" onclick="getExternalLink('https://nationsglory.fr?passwordrecover');" data-translate>Réinitialiser le mot de passe.</a>
+                </div>
+                <button id="loginButton" name="loginButton" type="submit" data-translate>Connexion</button>
+                <span data-translate>Vous n’avez pas de compte ?</span><span><a href="#" title="" id="create-link" onclick="getExternalLink('https://nationsglory.fr/signup');" data-translate>Créer un compte.</a></span>
+            </form>
+        </main>
+    </body>
+    </html>

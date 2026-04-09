@@ -1,0 +1,24 @@
+{
+  "name": "NationsGlory",
+  "version": "5.0.104",
+  "description": "Launcher NationsGlory",
+  "main": "main.js",
+  "author": "WebNations SARL, <gestion@nationsglory.fr>",
+  "license": "ISC",
+  "dependencies": {
+    "adm-zip": "^0.5.10",
+    "async": "^3.2.6",
+    "axios": "^1.5.1",
+    "discord-rpc": "^4.0.1",
+    "electron-notarize": "^1.2.2",
+    "electron-store": "^8.1.0",
+    "electron-updater": "^6.1.4",
+    "getmac": "^5.20.0",
+    "hddserial": "^0.0.7",
+    "jszip": "^3.10.1",
+    "node-machine-id": "^1.1.12",
+    "p-limit": "^2.3.0",
+    "ssh2": "^1.14.0",
+    "system-locale": "^0.1.0"
+  }
+}

@@ -1,0 +1,102 @@
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="../style/style.css"
+  media="screen"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="../style/settings.css"
+  media="screen"
+/>
+<header id="headerSettings">
+  <h2 data-translate>Paramètres</h2>
+</header>
+<nav id="sidebar">
+  <ul>
+    <li onclick="ChangeRoute('settings')" class="active" data-translate>
+      Paramètres
+    </li>
+    <li onclick="ChangeRoute('skins')" data-translate>Skins</li>
+    <li onclick="ChangeRoute('accounts')" data-translate>Comptes</li>
+    <li onclick="ChangeRoute('resourcepacks')" data-translate>
+      Packs de ressources
+    </li>
+    <li onclick="ChangeRoute('shaderpacks')" data-translate>
+      Packs de shaders
+    </li>
+    <li onclick="ChangeRoute('screenshots')" data-translate>Screenshots</li>
+    <li onclick="ChangeRoute('console')" data-translate>Console</li>
+    <li onclick="ChangeRoute('crashreports')" data-translate>
+      Rapports de crash
+    </li>
+    <li onclick="ChangeRoute('about')" data-translate>À propos</li>
+    <li onclick="logout()" data-translate>Déconnexion</li>
+  </ul>
+</nav>
+<main id="settings">
+  <h2 data-translate>Général</h2>
+  <h3 data-translate>Langue de l'application</h3>
+  <select id="languageSelector">
+    <option value="fr" data-translate>Français</option>
+    <option value="en" data-translate>Anglais</option>
+    <option value="es" data-translate>Espagnol</option>
+  </select>
+  <h3 data-translate>Paramètres de jeu</h3>
+  <button class="bigbutton grey" onclick="repareng()" data-translate>
+    Réparer l'installation NationsGlory
+  </button>
+  <div class="setting">
+    <div class="setting-icon">
+      <img src="../images/Icon_RAM.png" alt="RAM Icon" />
+    </div>
+    <div class="setting-info">
+      <h1 data-translate>Mémoire RAM</h1>
+      <p data-translate>
+        Gérez la quantité de RAM que vous souhaitez attribuer à votre jeu.
+      </p>
+    </div>
+    <div class="setting-action">
+      <button type="button">
+        <img src="../images/chevron-down.svg" alt="RAM Icon" />
+      </button>
+    </div>
+    <div class="setting-details">
+      <div class="setting-infobox">
+        <div class="setting-infobox-icon">
+          <img src="../images/Icon_Info.png" alt="Info Icon" />
+        </div>
+        <div class="setting-infobox-info" data-translate>
+          Davantage de mémoire RAM à contribuera à la stabilité et aux
+          performances du jeu. Toutefois, il est important de noter qu'une
+          quantité démesurée de RAM n'est pas indispensable.
+        </div>
+      </div>
+      <input type="range" id="ram-range" min="1" max="100" value="5" step="1" />
+      <span id="current-value">2</span>Go/<span id="max-value">2</span>Go
+      <div class="ram-info" data-translate>
+        <span><b>2 Go </b> de RAM recommandée</span>
+      </div>
+    </div>
+  </div>
+  <h3 data-translate>Sélection des mods additionnels</h3>
+  <div id="modsContainer">Loading...</div>
+</main>
+<script>
+  // Add this BEFORE the nav markup or at the top of your first <script> block
+  function ChangeRoute(route) {
+    const iframe = document.getElementById("framecontent");
+    if (iframe) {
+      iframe.src = "../routes/" + route + ".html";
+    }
+    // Update active nav item
+    document.querySelectorAll("#menu ul li").forEach((li) => {
+      li.classList.remove("active");
+    });
+    // Optionally highlight the clicked item — handled by caller or event
+  }
+</script>
+<script src="../js/functions.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/settings.js"></script>

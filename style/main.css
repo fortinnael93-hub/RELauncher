@@ -1,0 +1,53 @@
+#framecontent {
+	position: relative;
+	background: #0C0C10;
+	width: calc(100% - 100px);
+	height:100%;
+	margin: 0 0 0 100px;
+	-webkit-user-select: none;
+	border-radius: 0 10px 10px 0;
+}
+#NGRadioModule{
+	display:none;
+	position: absolute;
+	z-index:1;
+	color:white;
+	border-radius: 0.75rem;
+	border: 4px solid rgba(255, 255, 255, 0.10);
+	background: #26262A;
+	top: 12.5rem;
+	left: 7rem;
+
+}
+#song-card {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+}
+
+#song-image{
+	border-radius: 8px;
+	width: 60px;
+	height: 60px;
+	margin-right: 10px;
+}
+
+#song-info h3, 
+#song-info p {
+	margin: 0;
+}
+#song-title{
+	font-weight:bold;
+}
+#play-button {
+	margin-left:10px;
+    width: 35px;
+    height: 35px
+}
+
+#play-button > img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.85;
+    cursor: pointer;
+}

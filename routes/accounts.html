@@ -1,0 +1,30 @@
+<link rel="stylesheet" type="text/css" href="../style/style.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="../style/settings.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="../style/accounts.css" media="screen"/>
+<header id="headerSettings">
+    <h2>Paramètres</h2>
+</header>
+<nav id="sidebar">
+    <ul>
+        <li onclick="ChangeRoute('settings')" data-translate>Paramètres</li>
+        <li onclick="ChangeRoute('skins')" data-translate>Skins</li>
+        <li onclick="ChangeRoute('accounts')" class="active" data-translate>Comptes</li>
+        <li onclick="ChangeRoute('resourcepacks')" data-translate>Packs de ressources</li>
+        <li onclick="ChangeRoute('shaderpacks')" data-translate>Packs de shaders</li>
+        <li onclick="ChangeRoute('screenshots')" data-translate>Screenshots</li>
+        <li onclick="ChangeRoute('console')" data-translate>Console</li>
+        <li onclick="ChangeRoute('crashreports')" data-translate>Rapports de crash</li>
+        <li onclick="ChangeRoute('about')" data-translate>À propos</li>
+        <li onclick="logout()" data-translate>Déconnexion</li>
+    </ul>
+</nav>
+<main id="accounts">
+    <h2 data-translate>Comptes</h2>
+    <h3 data-translate>Passe rapidement d'un compte à l'autre en un clic</h3>
+    <div id="accountsList">
+    </div>
+    <button onclick="addAccount()" id="addAccount" data-translate>Ajouter un compte</button>
+</main>
+<script src="../js/functions.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/accounts.js"></script>

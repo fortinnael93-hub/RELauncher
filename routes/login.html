@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Login</title>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../style/login.css"
+      media="screen"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src http://localhost:3000 https://*.onrender.com https://*.railway.app https://*.up.railway.app"
+    />
+  </head>
+  <body>
+    <header id="header">
+      <div>&nbsp;</div>
+      <ul>
+        <li>
+          <button onclick="WindowClose()">
+            <img src="../images/icon_close.png" alt="Fermer" data-translate />
+          </button>
+        </li>
+      </ul>
+    </header>
+    <main id="login">
+      <section>
+        <img src="../images/Logo.png" alt="" />
+        <h1>ReLaunch</h1>
+      </section>
+      <form action="#" onsubmit="return false;">
+        <aside id="messageBox" class="messageBox error">
+          <div></div>
+          <p id="loginErrorMessage"></p>
+        </aside>
+        <div>
+          <label for="email" data-translate>Adresse E-mail</label>
+          <input
+            type="text"
+            value=""
+            autocomplete="off"
+            name="email"
+            id="email"
+            placeholder="Entrez votre adresse e-mail"
+            data-translate
+          />
+        </div>
+        <div>
+          <label for="password" data-translate>Mot de passe</label>
+          <input
+            type="password"
+            value=""
+            autocomplete="off"
+            name="password"
+            id="password"
+            placeholder="Entrez votre mot de passe"
+            data-translate
+          />
+        </div>
+        <div>
+          <span data-translate>Mot de passe oublié ?</span>
+          <a
+            href="#"
+            title=""
+            onclick="getExternalLink('https://nationsglory.fr?passwordrecover')"
+            data-translate
+            >Réinitialiser le mot de passe.</a
+          >
+        </div>
+        <button
+          id="loginButton"
+          name="loginButton"
+          type="button"
+          data-translate
+        >
+          Connexion
+        </button>
+        <span data-translate>Vous n’avez pas de compte ?</span>
+        <span
+          ><a
+            href="#"
+            title=""
+            id="create-link"
+            onclick="getExternalLink('https://nationsglory.fr/signup')"
+            data-translate
+            >Créer un compte.</a
+          ></span
+        >
+      </form>
+    </main>
+    <script src="../js/functions.js"></script>
+    <script src="../js/login.js"></script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title data-translate>Double Authentificator</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="../style/login.css" media="screen"/>
+        <script src="../js/send2auth.js" async></script>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'unsafe-inline'; connect-src https://authserver.nationsglory.fr">
+    </head>
+<body>
+
+    <header id="header">
+        <div>&nbsp;</div>
+    </header>
+
+    <main id="factor">
+        <aside id="messageBox" class="messageBox error">
+            <div></div>
+            <p id="loginErrorMessage"></p>
+        </aside>
+        <article>
+            <div><img src="../images/Icon_Shield.svg" alt=""/></div>
+            <section>
+                <h1 data-translate>Authentification à double facteur</h1>
+                <p data-translate>Ce compte est protégé par une vérification en deux étapes. Veuillez saisir les 6 chiffres pour poursuivre.</p>
+                <div id="inputs" class="inputs"> 
+                    <input class="input" type="text" inputmode="numeric" maxlength="1" id="code01" name="code01" value=""/>
+                    <input class="input" type="text" inputmode="numeric" maxlength="1" id="code02" name="code02" value=""/>
+                    <input class="input" type="text" inputmode="numeric" maxlength="1" id="code03" name="code03" value=""/>
+                    <input class="input" type="text" inputmode="numeric" maxlength="1" id="code04" name="code04" value=""/>
+                    <input class="input" type="text" inputmode="numeric" maxlength="1" id="code05" name="code05" value=""/>
+                    <input class="input" type="text" inputmode="numeric" maxlength="1" id="code06" name="code06" value=""/>
+                </div>
+                <aside id="buttons"></aside>
+                <span data-translate>Vous n'arrivez pas à vous connecter ? </span><span onclick="openLogin();" data-translate>Retour sur la connexion</span>
+            </section>
+        </article>
+    </main>
+
+</body>
+</html>

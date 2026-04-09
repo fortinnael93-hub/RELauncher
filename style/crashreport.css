@@ -1,0 +1,105 @@
+#block {
+    display: flex;
+    padding: 1.5rem 2rem 1.5rem 1.5rem;
+    flex: 1 0 0;
+    white-space: pre-wrap;
+    max-height: calc(50vh - 7rem);
+    border-radius: 0.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.10);
+    background: #101016;
+    user-select: text!important;
+    align-self: stretch;
+    flex-direction: column;
+    user-select: none;
+    overflow:auto;
+    flex-wrap: nowrap;
+}
+#block p{
+    margin:0;
+}
+
+#block::-webkit-scrollbar {
+	width: 0.375rem; /* Adjusted width */
+}
+
+#block::-webkit-scrollbar-track {
+	border-radius: 6.25rem;
+	background: #27272D;
+	margin-right: 0.5rem; /* Existing padding effect */
+}
+
+#block::-webkit-scrollbar-thumb {
+	border-radius: 6.25rem;
+	background: #FFF;
+	margin-right: 0.5rem; /* Existing padding effect */
+}
+#soluce {
+    display: flex;
+    padding: 1.5rem 2rem 1.5rem 1.5rem;
+    flex: 1 0 0;
+    white-space: pre-wrap;
+    max-height: calc(85vh - 27rem);
+    border-radius: 0.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.10);
+    background: #101016;
+    align-self: stretch;
+    flex-direction: column;
+    user-select: none;
+    margin-bottom:10px;
+    color:white;
+    overflow:auto;
+    flex-wrap: nowrap;
+    margin-top:20px;
+}
+#soluce p{
+    margin:0;
+}
+
+#soluce::-webkit-scrollbar {
+    width: 0.375rem; /* Adjusted width */
+}
+
+#soluce::-webkit-scrollbar-track {
+    border-radius: 6.25rem;
+    background: #27272D;
+    margin-right: 0.5rem; /* Existing padding effect */
+}
+
+#soluce::-webkit-scrollbar-thumb {
+    border-radius: 6.25rem;
+    background: #FFF;
+    margin-right: 0.5rem; /* Existing padding effect */
+}
+
+.contact-support{
+    display: flex;
+    padding: 0.75rem;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.5rem;
+    color:white;
+    font-weight:bold;
+    border:none;
+    width:100%;
+    cursor:pointer;
+    margin-top:10px;
+    border-radius: 0.375rem;
+    background: #5F77FF;
+}
+
+.pastebin{
+    display: flex;
+    padding: 0.75rem;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.5rem;
+    color:white;
+    font-weight:bold;
+    border:none;
+    color:white;
+    width:100%;
+    cursor:pointer;
+    margin-top:10px;
+    border-radius: 0.375rem;
+    background: #737373;
+}

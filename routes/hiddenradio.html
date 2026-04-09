@@ -1,0 +1,20 @@
+<title>NGRadio</title>
+<audio id="radioPlayer" src="https://radio.nationsglory.fr/listen/ngradio/NGRadio" preload="auto"></audio>
+<script>
+    const { ipcRenderer } = require('electron');
+    const audioPlayer = document.getElementById('radioPlayer');
+    document.getElementById('radioPlayer').volume = 0.1;
+
+    ipcRenderer.on('NGRadio-playpause', () => {
+       if (audioPlayer.paused) {
+        audioPlayer.load();
+        audioPlayer.play();
+    } else {
+        audioPlayer.pause();
+    }
+});
+
+    ipcRenderer.on('NGRadio-volume', (event, volume) => {
+        document.getElementById('radioPlayer').volume = volume;
+    });
+</script>

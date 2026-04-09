@@ -1,0 +1,16 @@
+        <link rel="stylesheet" type="text/css" href="../style/twitch.css" media="screen"/>
+        <section id="background" style="position:absolute;background-image:url('../images/background.png');z-index:-1;background-size:contain;width:98%;height:98%;filter:blur(5rem);">
+        </section>
+        <main id="twitch">
+           <div id="no-stream">
+            <img src="../images/Icon_NoStream.png" alt="NoStream Icon">
+            <h3 data-translate>Aucune diffusion est en cours sur les plateformes</h3>
+            <p data-translate>N'hésite pas à promouvoir ton contenu en incluant <b>@NationsGloryFR</b> dans le titre de ta diffusion en direct afin d'apparaitre sur cette page.</p>
+            <p><button onclick="getExternalLink('https://www.twitch.tv/nationsgloryfr')" data-translate>Découvre notre chaine Twitch</button></p>
+        </div>
+        <div id="main-stream"></div>
+        <div id="other-streams" class="grid"></div>
+    </main>
+    <script src="../js/functions.js" async></script>
+    <script src="../js/utils.js" async></script>
+    <script src="../js/twitch.js" async></script>
