@@ -1,0 +1,550 @@
+[
+  {
+    "text": "Découvre notre chaine Twitch",
+    "translation": "Descubra nuestro canal de Twitch"
+  },
+  {
+    "text": "joueurs connectés",
+    "translation": "jugadores conectados"
+  },
+  {
+    "text": "Notes de mise à jour",
+    "translation": "Notas de publicación"
+  },
+  {
+    "text": "Lancer",
+    "translation": "Lanzar"
+  },
+  {
+    "text": "Version",
+    "translation": "Versión"
+  },
+  {
+    "text": "Aucune diffusion est en cours sur les plateformes",
+    "translation": "No hay retransmisión en directo en curso en las plataformas"
+  },
+  {
+    "text": "N'hésite pas à promouvoir ton contenu en incluant @NationsGloryFR dans le titre de ta diffusion en direct afin d'apparaitre sur cette page.",
+    "translation": "No dudes en promocionar tus contenidos incluyendo @NationsGloryFR en el título de tu retransmisión en directo para que aparezca en esta página."
+  },
+  {
+    "text": "Paramètres",
+    "translation": "Parámetros"
+  },
+  {
+    "text": "Skins",
+    "translation": "Skins"
+  },
+  {
+    "text": "Recommendé",
+    "translation": "Recomendado"
+  },
+  {
+    "text": "Comptes",
+    "translation": "Cuentas"
+  },
+  {
+    "text": "Packs de ressources",
+    "translation": "Paquetes de recursos"
+  },
+  {
+    "text": "Packs de shaders",
+    "translation": "Packs de sombreadores"
+  },
+  {
+    "text": "Console",
+    "translation": "Consola"
+  },
+  {
+    "text": "Rapports de crash",
+    "translation": "Informes de accidentes"
+  },
+  {
+    "text": "À propos",
+    "translation": "Quiénes somos"
+  },
+  {
+    "text": "Déconnexion",
+    "translation": "Desconexión"
+  },
+  {
+    "text": "Général",
+    "translation": "General"
+  },
+  {
+    "text": "Langue de l'application",
+    "translation": "Lengua de aplicación"
+  },
+  {
+    "text": "Français",
+    "translation": "Francés"
+  },
+  {
+    "text": "Anglais",
+    "translation": "Inglés"
+  },
+  {
+    "text": "Espagnol",
+    "translation": "Español"
+  },
+  {
+    "text": "Paramètres de jeu",
+    "translation": "Ajustes del juego"
+  },
+  {
+    "text": "Réparer l'installation NationsGlory",
+    "translation": "Reparación de la instalación de NationsGlory"
+  },
+  {
+    "text": "Mémoire RAM",
+    "translation": "Memoria RAM"
+  },
+  {
+    "text": "Gérez la quantité de RAM que vous souhaitez attribuer à votre jeu.",
+    "translation": "Gestiona la cantidad de RAM que quieres asignar a tu juego."
+  },
+  {
+    "text": "\n\t\t\t\t\tDavantage de mémoire RAM à contribuera à la stabilité et aux performances du jeu. Toutefois, il est important de noter qu'une quantité démesurée de RAM n'est pas indispensable.\n\t\t\t\t",
+    "translation": "\n\t\t\t\t\tMás RAM contribuirá a la estabilidad y el rendimiento del juego. Sin embargo, es importante tener en cuenta que una cantidad desmesurada de RAM no es esencial.\n\t\t\t\t"
+  },
+  {
+    "text": "\n\t\t\t\t2 Go  de RAM recommandée\n\t\t\t",
+    "translation": "\n\t\t\t\tSe recomiendan 2 GB de RAM\n\t\t\t"
+  },
+  {
+    "text": "Sélection des mods additionnels",
+    "translation": "Selección de mods adicionales"
+  },
+  {
+    "text": "Modification du skin",
+    "translation": "Modificación de la skin"
+  },
+  {
+    "text": "Actif",
+    "translation": "Activos"
+  },
+  {
+    "text": "Le fichier doit être au format .png et conforme au modèle \"Steve\" de Minecraft, avec une résolution ne dépassant pas 128x128px.\n            ",
+    "translation": "El archivo debe estar en formato .png y ajustarse al modelo \"Steve\" de Minecraft, con una resolución no superior a 128x128px.\n            "
+  },
+  {
+    "text": "Glisse ton fichier PNG ici...",
+    "translation": "Arrastre su archivo PNG aquí..."
+  },
+  {
+    "text": "Skins sauvegardés",
+    "translation": "Skins guardadas"
+  },
+  {
+    "text": "En cours d'utilisation",
+    "translation": "En uso"
+  },
+  {
+    "text": "Passe rapidement d'un compte à l'autre en un clic",
+    "translation": "Cambie rápidamente de una cuenta a otra con sólo pulsar un botón"
+  },
+  {
+    "text": "Ajouter un compte",
+    "translation": "Añadir una cuenta"
+  },
+  {
+    "text": "Fermer",
+    "translation": "Cerrar"
+  },
+  {
+    "text": "Entre tes identifiants pour ajouter ton compte",
+    "translation": "Introduzca sus datos de acceso para añadir su cuenta"
+  },
+  {
+    "text": "Adresse E-mail",
+    "translation": "Dirección Correo electrónico"
+  },
+  {
+    "text": "Entrez votre adresse e-mail",
+    "translation": "Introduzca su dirección de correo electrónico"
+  },
+  {
+    "text": "Mot de passe",
+    "translation": "Contraseña"
+  },
+  {
+    "text": "Entrez votre mot de passe",
+    "translation": "Introduzca su contraseña"
+  },
+  {
+    "text": "Mot de passe oublié ?",
+    "translation": "¿Ha olvidado su contraseña?"
+  },
+  {
+    "text": "Réinitialiser le mot de passe.",
+    "translation": "Restablecer contraseña."
+  },
+  {
+    "text": "Connexion",
+    "translation": "Conexión"
+  },
+  {
+    "text": "Vous n’avez pas de compte ?",
+    "translation": "¿No tiene cuenta?"
+  },
+  {
+    "text": "Veuillez renseigner un mot de passe",
+    "translation": "Introduzca una contraseña"
+  },
+  {
+    "text": "Créer un compte.",
+    "translation": "Crea una cuenta."
+  },
+  {
+    "text": "Le format de votre adresse email est incorrect",
+    "translation": "El formato de su dirección de correo electrónico es incorrecto"
+  },
+  {
+    "text": "Glisse ton fichier ZIP ici...",
+    "translation": "Arrastre su archivo ZIP aquí..."
+  },
+  {
+    "text": "Liste",
+    "translation": "Lista"
+  },
+  {
+    "text": " Retrouve la liste de tes packs de ressources",
+    "translation": " Encuentre la lista de sus paquetes de recursos"
+  },
+  {
+    "text": "Retrouve la liste de tes packs de shaders",
+    "translation": "Busca la lista de tus paquetes de sombreadores"
+  },
+  {
+    "text": "Ne partage le contenu de cette console qu'avec le support NationsGlory.",
+    "translation": "Sólo comparte el contenido de esta consola con el soporte de NationsGlory."
+  },
+  {
+    "text": "Liste des rapports de crash",
+    "translation": "Lista de informes de accidentes"
+  },
+  {
+    "text": "Contacter le support",
+    "translation": "Contactar con el servicio de asistencia"
+  },
+  {
+    "text": "Vider le dossier des rapports de crash",
+    "translation": "Vaciar la carpeta de informes de accidentes"
+  },
+  {
+    "text": "Contrat d'utilisation relatif à l'application",
+    "translation": "Acuerdo de usuario de la aplicación"
+  },
+  {
+    "text": "Vérification en cours",
+    "translation": "Auditoría en curso"
+  },
+  {
+    "text": "Jeu en cours...",
+    "translation": "Empieza el juego..."
+  },
+  {
+    "text": "Double Authentificator",
+    "translation": "Autentificador doble"
+  },
+  {
+    "text": "Authentification à double facteur",
+    "translation": "Autenticación de dos factores"
+  },
+  {
+    "text": "Ce compte est protégé par une vérification en deux étapes. Veuillez saisir les 6 chiffres pour poursuivre.",
+    "translation": "Esta cuenta está protegida por un proceso de verificación en dos pasos. Por favor, introduzca los 6 dígitos para continuar."
+  },
+  {
+    "text": "Vous n'arrivez pas à vous connecter ? Retour sur la connexion",
+    "translation": "¿No puede conectarse? Volver al inicio de sesión"
+  },
+  {
+    "text": "Retour sur la connexion",
+    "translation": "Volver a la conexión"
+  },
+  {
+    "text": "Vous n'arrivez pas à vous connecter ? ",
+    "translation": "¿No puede conectarse?"
+  },
+  {
+    "text": "<button onclick=\"sendCode();\" id=\"sendCode\" data-translate>Envoyer un SMS</button><button onclick=\"validateCode();\" data-translate>Valider</button>",
+    "translation": "<button onclick=\"sendCode();\" id=\"sendCode\" data-translate>Enviar un SMS</button><button onclick=\"validateCode();\" data-translate>Validar</button>"
+  },
+  {
+    "text": "Votre code est incorrect",
+    "translation": "Su código es incorrecto"
+  },
+  {
+    "text": "Code envoyé",
+    "translation": "Código enviado"
+  },
+  {
+    "text": "Aucun rapport de crash",
+    "translation": "Ningún informe de accidente"
+  },
+  {
+    "text": "Aucun rapport de crash pour le moment",
+    "translation": "No hay informes de accidentes por el momento"
+  },
+  {
+    "text": "Tous les fichiers ont été effacés.",
+    "translation": "Se han borrado todos los archivos."
+  },
+  {
+    "text": "Téléchargement de la mise à jour...",
+    "translation": "Descargando la actualización..."
+  },
+  {
+    "text": "Mise à jour",
+    "translation": "Actualización"
+  },
+  {
+    "text": "Installation dans 5 secondes...",
+    "translation": "Instalación en 5 segundos..."
+  },
+  {
+    "text": "<p>Lance une première fois le jeu po ur accéder à cette partie.</p>",
+    "translation": "<p>Inicia el juego una vez para acceder a esta parte.</p>"
+  },
+  {
+    "text": "Lance une première fois le jeu po ur accéder à cette partie.",
+    "translation": "Inicia el juego una vez para acceder a esta parte."
+  },
+  {
+    "text": "Jeu en cours",
+    "translation": "Juego en curso"
+  },
+  {
+    "text": "Veuillez renseigner une adresse email",
+    "translation": "Introduzca una dirección de correo electrónico"
+  },
+  {
+    "text": "Rapport de Crash",
+    "translation": "Informe de accidente"
+  },
+  {
+    "text": "Crash report",
+    "translation": "Informe de accidente"
+  },
+  {
+    "text": "Un crash vient de survenir !",
+    "translation": "¡Ha habido un accidente!"
+  },
+  {
+    "text": "Recherche d'une solution",
+    "translation": "Buscar una solución"
+  },
+  {
+    "text": "Rapport de Crash à communiquer au support.",
+    "translation": "Informe de accidente para enviar a soporte."
+  },
+  {
+    "text": "Recherche d'une solution....",
+    "translation": "Buscar una solución...."
+  },
+  {
+    "text": "Recherche d'une solution dans la base de donnée du support.",
+    "translation": "Buscar una solución en la base de datos de soporte."
+  },
+  {
+    "text": "Téléchargement en cours",
+    "translation": "Descarga en curso"
+  },
+  {
+    "text": "<button onclick=\"validateCode();\" style=\"width:100%;\" data-translate>Valider</button>",
+    "translation": "<button onclick=\"validateCode();\" style=\"width:100%;\" data-translate>Validar</button>"
+  },
+  {
+    "text": "<p>Lance une première fois le jeu pour accéder à cette partie.</p>",
+    "translation": "<p>Ejecuta el juego una vez para acceder a esta parte.</p>"
+  },
+  {
+    "text": "Lance une première fois le jeu pour accéder à cette partie.",
+    "translation": "Ejecuta el juego una vez para acceder a esta parte."
+  },
+  {
+    "text": "Aucune description",
+    "translation": "Sin descripción"
+  },
+  {
+    "text": "Edit Name",
+    "translation": "Editar nombre"
+  },
+  {
+    "text": "Delete",
+    "translation": "Borrar"
+  },
+  {
+    "text": "Upload",
+    "translation": "Cargar"
+  },
+  {
+    "text": "Screenshots",
+    "translation": "Capturas de pantalla"
+  },
+  {
+    "text": "Toutes les captures réalisées via le F2.",
+    "translation": "Todas las capturas se realizan a través de F2."
+  },
+  {
+    "text": "Editer le nom",
+    "translation": "Editar nombre"
+  },
+  {
+    "text": "Enter the new name for the file:",
+    "translation": "Introduzca el nuevo nombre del archivo:"
+  },
+  {
+    "text": "Héberger",
+    "translation": "Héberger"
+  },
+  {
+    "text": " Héberger",
+    "translation": " Héberger"
+  },
+  {
+    "text": "\n        Lancer\n      "
+  },
+  {
+    "text": "\n        Lancer\n      "
+  },
+  {
+    "text": "\n      N'hésite pas à promouvoir ton contenu en incluant\n      @Le_Refuge_Emeraudien dans le titre de ta diffusion en direct afin\n      d'apparaitre sur cette page.\n    "
+  },
+  {
+    "text": "\n        Découvre notre chaîne Twitch\n      "
+  },
+  {
+    "text": "\n        Lancer\n      "
+  },
+  {
+    "text": "\n        Lancer\n      "
+  },
+  {
+    "text": "\n        Lancer\n      "
+  },
+  {
+    "text": "\n      N'hésite pas à promouvoir ton contenu en incluant\n      @Le_Refuge_Emeraudien dans le titre de ta diffusion en direct afin\n      d'apparaitre sur cette page.\n    "
+  },
+  {
+    "text": "\n        Découvre notre chaîne Twitch\n      "
+  },
+  {
+    "text": "\n        Lancer\n      "
+  },
+  {
+    "text": "\n        Lancer\n      "
+  },
+  {
+    "text": "\n        Lancer\n      "
+  },
+  {
+    "text": "\n        Lancer\n      "
+  },
+  {
+    "text": "\n      Packs de ressources\n    "
+  },
+  {
+    "text": "\n      Packs de shaders\n    "
+  },
+  {
+    "text": "\n      Rapports de crash\n    "
+  },
+  {
+    "text": "\n      Le fichier doit être au format .png et conforme au modèle \"Steve\" de\n      Minecraft, avec une résolution ne dépassant pas 128x128px.\n    "
+  },
+  {
+    "text": "\n      Packs de ressources\n    "
+  },
+  {
+    "text": "\n      Packs de ressources\n    "
+  },
+  {
+    "text": "\n      Packs de shaders\n    "
+  },
+  {
+    "text": "\n      Rapports de crash\n    "
+  },
+  {
+    "text": "\n      Packs de ressources\n    "
+  },
+  {
+    "text": "\n      Packs de shaders\n    "
+  },
+  {
+    "text": "\n      Rapports de crash\n    "
+  },
+  {
+    "text": "\n      Le fichier doit être au format .png et conforme au modèle \"Steve\" de\n      Minecraft, avec une résolution ne dépassant pas 128x128px.\n    "
+  },
+  {
+    "text": "\n      Packs de ressources\n    "
+  },
+  {
+    "text": "\n      Packs de shaders\n    "
+  },
+  {
+    "text": "\n      Rapports de crash\n    "
+  },
+  {
+    "text": "Retrouve la liste de tes packs de ressources"
+  },
+  {
+    "text": "\n      Packs de ressources\n    "
+  },
+  {
+    "text": "\n      Packs de shaders\n    "
+  },
+  {
+    "text": "\n      Rapports de crash\n    "
+  },
+  {
+    "text": "\n      Packs de ressources\n    "
+  },
+  {
+    "text": "\n      Packs de shaders\n    "
+  },
+  {
+    "text": "\n      Packs de ressources\n    "
+  },
+  {
+    "text": "\n      Packs de shaders\n    "
+  },
+  {
+    "text": "\n      Rapports de crash\n    "
+  },
+  {
+    "text": "\n      Le fichier doit être au format .png et conforme au modèle \"Steve\" de\n      Minecraft, avec une résolution ne dépassant pas 128x128px.\n    "
+  },
+  {
+    "text": "\n      Packs de ressources\n    "
+  },
+  {
+    "text": "\n      Packs de shaders\n    "
+  },
+  {
+    "text": "\n      Console\n    "
+  },
+  {
+    "text": "\n      Rapports de crash\n    "
+  },
+  {
+    "text": "\n    Ne partage le contenu de cette console qu'avec le support NationsGlory.\n  "
+  },
+  {
+    "text": "\n      Packs de ressources\n    "
+  },
+  {
+    "text": "\n      Packs de shaders\n    "
+  },
+  {
+    "text": "\n      Rapports de crash\n    "
+  },
+  {
+    "text": "\n      Packs de ressources\n    "
+  },
+  {
+    "text": "\n      Packs de shaders\n    "
+  }
+]

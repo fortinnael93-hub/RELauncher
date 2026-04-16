@@ -287,66 +287,6 @@ th {
     margin: 10px 0 20px 0;
 }
 
-/* ── Modpack section ─────────────────────────────────────── */
-#modpackSection {
-    margin: 0 0 12px 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-#modpackSection > select {
-    display: inline-block;
-    width: 300px;
-    border-radius: 6px;
-    background: #1a1a22;
-    border: 1px solid rgba(100, 180, 255, 0.25);
-    color: #7EC8FF;
-    font-weight: 600;
-    padding: 8px 12px;
-    cursor: pointer;
-    text-transform: none;
-    font-size: 14px;
-    transition: border-color 0.2s, background 0.2s;
-}
-
-#modpackSection > select:hover {
-    border-color: rgba(100, 180, 255, 0.55);
-    background: #202030;
-}
-
-#modpackSection > select option {
-    background: #1a1a22;
-    color: #FFFFFF;
-}
-
-/* Badge affiché après sélection d'un modpack */
-.modpack-badge {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(100, 180, 255, 0.12);
-    border: 1px solid rgba(100, 180, 255, 0.30);
-    border-radius: 6px;
-    padding: 5px 10px;
-    font-size: 12px;
-    font-weight: 600;
-    color: #7EC8FF;
-    white-space: nowrap;
-    transition: opacity 0.3s;
-}
-
-.modpack-badge img {
-    width: 14px;
-    height: 14px;
-    opacity: 0.8;
-}
-
-.modpack-badge.hidden {
-    display: none;
-}
-/* ── Fin modpack ─────────────────────────────────────────── */
-
 #content > aside > aside > section {
     margin: 0 0 12px 0;
     display: flex;

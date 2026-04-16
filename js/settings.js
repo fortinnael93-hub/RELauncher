@@ -1,109 +1,253 @@
-/**
- * settings.js — Gestion des paramètres du launcher
- */
+const BASE_DIR = getBaseDirectory();
 
-if (typeof ipcRenderer === "undefined")
-  var ipcRenderer = require("electron").ipcRenderer;
-if (typeof Store === "undefined") var Store = require("electron-store");
-if (typeof store === "undefined") var store = new Store();
-
-const DEFAULTS = {
-  lang: "fr",
-  max_ram: 4,
-  min_ram: 1,
-  java_path: "",
-  install_path: "",
-  username: "",
-  authtoken: "",
-  version: "",
-  launcherVersion: "1.0.0",
-};
-
-function loadSettings() {
-  const langSelect = document.getElementById("lang");
-  if (langSelect) {
-    langSelect.value = store.get("lang") || DEFAULTS.lang;
-    langSelect.addEventListener("change", () => {
-      store.set("lang", langSelect.value);
-      ipcRenderer.send("set-data", "lang", langSelect.value);
-    });
+function getBaseDirectory() {
+  let dir;
+  switch (os.platform()) {
+    case "win32":
+      let appdata =
+        process.env.APPDATA || path.join(os.homedir(), "AppData", "Roaming");
+      if (!appdata.endsWith(path.sep)) appdata += path.sep;
+      dir = path.join(appdata, ".NationsGlory");
+      break;
+    case "darwin":
+      dir = path.join(
+        os.homedir(),
+        "Library",
+        "Application Support",
+        ".NationsGlory",
+      );
+      break;
+    default:
+      dir = path.join(os.homedir(), ".config", ".NationsGlory");
+      break;
   }
-
-  const ramRange = document.getElementById("max_ram");
-  const ramLabel = document.getElementById("ram_label");
-  const savedRam = store.get("max_ram") || DEFAULTS.max_ram;
-  if (ramRange) {
-    ramRange.value = savedRam;
-    if (ramLabel) ramLabel.innerText = savedRam + " Go";
-    ramRange.addEventListener("input", () => {
-      const val = parseInt(ramRange.value);
-      if (ramLabel) ramLabel.innerText = val + " Go";
-      store.set("max_ram", val);
-      ipcRenderer.send("set-data", "max_ram", val);
-    });
-  }
-
-  const javaInput = document.getElementById("java_path");
-  if (javaInput) {
-    javaInput.value = store.get("java_path") || DEFAULTS.java_path;
-    javaInput.addEventListener("change", () => {
-      store.set("java_path", javaInput.value);
-      ipcRenderer.send("set-data", "java_path", javaInput.value);
-    });
-  }
-
-  const installInput = document.getElementById("install_path");
-  if (installInput) {
-    installInput.value = store.get("install_path") || DEFAULTS.install_path;
-    installInput.addEventListener("change", () => {
-      store.set("install_path", installInput.value);
-      ipcRenderer.send("set-data", "install_path", installInput.value);
-    });
-  }
-
-  const usernameEl = document.getElementById("settings_username");
-  if (usernameEl) usernameEl.innerText = store.get("username") || "—";
+  return path.normalize(dir);
 }
 
-function browsePath(inputId) {
-  ipcRenderer.invoke("dialog:openDirectory").then((result) => {
-    if (result && !result.canceled && result.filePaths.length > 0) {
-      const selectedPath = result.filePaths[0];
-      const input = document.getElementById(inputId);
-      if (input) {
-        input.value = selectedPath;
-        store.set(inputId, selectedPath);
-        ipcRenderer.send("set-data", inputId, selectedPath);
+async function getAvailableVersions() {
+  const versionsDir = path.join(BASE_DIR, "versions");
+  const entries = await fsp.readdir(versionsDir);
+  return entries.filter((e) => e !== "temp");
+}
+
+function directoryExists(dirPath) {
+  return fs.existsSync(dirPath);
+}
+
+function setupLanguageSelector() {
+  const selector = document.getElementById("languageSelector");
+  if (!selector) return;
+  selector.value = lang;
+  selector.addEventListener("change", (e) => {
+    ipcRenderer.invoke("store", "lang", e.target.value);
+    ipcRenderer.invoke("changeroute", "launcher");
+  });
+}
+
+function setupSettingButton() {
+  const settingBtn = document.querySelector(".setting");
+  const actionBtn = document.querySelector(".setting-action button");
+  const details = document.querySelector(".setting-details");
+  const actionImg = document.querySelector(".setting-action button img");
+  if (!actionBtn) return;
+
+  settingBtn.addEventListener("click", () => {
+    const isHidden = !details.style.display || details.style.display === "none";
+    details.style.display = isHidden ? "flex" : "none";
+    isHidden
+      ? actionImg.classList.add("rotated")
+      : actionImg.classList.remove("rotated");
+  });
+}
+
+function setupRamRange() {
+  const ramRange = document.getElementById("ram-range");
+  if (!ramRange) return;
+
+  const maxRam = Math.floor(totalMemory);
+  document.getElementById("ram-range").value = max_ram;
+  document.getElementById("ram-range").max = maxRam;
+  document.getElementById("current-value").textContent = max_ram;
+  document.getElementById("max-value").textContent = maxRam;
+
+  ramRange.addEventListener("input", () => {
+    document.getElementById("current-value").textContent = ramRange.value;
+    ipcRenderer.invoke("store", "maxram", ramRange.value);
+  });
+}
+
+function computeFileHash(filePath) {
+  return new Promise((resolve, reject) => {
+    const hash = crypto.createHash("md5");
+    const stream = fs.createReadStream(filePath);
+    stream.on("data", (chunk) => hash.update(chunk));
+    stream.on("end", () => resolve(hash.digest("hex")));
+    stream.on("error", (err) => reject(err));
+  });
+}
+
+async function findFileByHash(dir, targetHash) {
+  const entries = await fsp.readdir(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    if (entry.isFile()) {
+      const filePath = path.join(dir, entry.name);
+      const hash = await computeFileHash(filePath);
+      if (hash === targetHash) return filePath;
+    }
+  }
+  return null;
+}
+
+async function populateModsContainer(currentVersion) {
+  const container = document.getElementById("modsContainer");
+  if (!container) return;
+
+  const modsPath = path.join(BASE_DIR, "versions", currentVersion, "mods");
+  if (!directoryExists(modsPath)) {
+    container.innerHTML = await translateAndSave(
+      "<p>Lance une première fois le jeu pour accéder à cette partie.</p>",
+      lang,
+    );
+    return;
+  }
+
+  const versions = await getAvailableVersions();
+  const modsDirs = versions.map((v) =>
+    path.join(BASE_DIR, "versions", v, "mods"),
+  );
+  const presence = await checkModsPresenceInDirs(modsDirs);
+  const allowedMods = await getCachedDataOrFetch(
+    `https://refuge-api.onrender.com/launcher/getMoreMods?token=${authtoken}&cuid=${cuidUser}&lang=${lang}`,
+    true,
+  );
+
+  displayMods(container, versions, allowedMods, presence);
+}
+
+async function checkModsPresenceInDirs(dirs) {
+  const result = {};
+  for (const dir of dirs) {
+    const entries = await fsp.readdir(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      if (entry.isFile()) {
+        const filePath = path.join(dir, entry.name);
+        const hash = await computeFileHash(filePath);
+        result[hash] = true;
       }
     }
+  }
+  return result;
+}
+
+async function displayMods(container, versions, mods, presence) {
+  container.innerHTML = "";
+  mods.sort((a, b) => b.recommended - a.recommended);
+
+  for (let i = 0; i < mods.length; i++) {
+    const mod = mods[i];
+    const element = await createModElement(mod, i, presence);
+    container.appendChild(element);
+    addModCheckboxEventListener(element, mod, versions);
+  }
+}
+
+async function createModElement(mod, index, presence) {
+  const el = document.createElement("div");
+  el.className = "moremod";
+  el.setAttribute("data-hash", mod.hash);
+
+  const isActive = presence && presence[mod.hash] && optmods.includes(mod.hash);
+  if (isActive) el.classList.add("active");
+
+  const checkboxId = "c" + index + "-Checkbox";
+  el.innerHTML = `
+        <input type="checkbox" id="${checkboxId}" class="moremod-checkbox" ${isActive ? "checked" : ""}>
+        <label for="${checkboxId}" class="moremod-label"></label>
+        <div class="moremod-info">
+            <h1>${mod.name} ${mod.recommended ? '<span class="badge-info">' + (await translateAndSave("Recommendé", lang)) + "</span>" : ""}</h1>
+            <p>${mod.description}</p>
+        </div>`;
+  return el;
+}
+
+function addModCheckboxEventListener(el, mod, versions) {
+  const checkbox = el.querySelector('input[type="checkbox"]');
+  checkbox.addEventListener("change", async function () {
+    await handleModCheckboxChange(this, mod, versions);
   });
 }
 
-function resetSettings() {
-  if (!confirm("Réinitialiser tous les paramètres ?")) return;
-  Object.entries(DEFAULTS).forEach(([key, value]) => {
-    store.set(key, value);
-    ipcRenderer.send("set-data", key, value);
-  });
-  loadSettings();
+async function handleModCheckboxChange(checkbox, mod, versions) {
+  const versionDirs = versions.map((v) => path.join(BASE_DIR, "versions", v));
+  for (const dir of versionDirs) {
+    const optmodsDir = path.join(dir, "opt-mods");
+    const modsDir = path.join(dir, "mods");
+    await moveModFile(checkbox, mod, optmodsDir, modsDir);
+  }
 }
 
-function logout() {
-  store.delete("authtoken");
-  store.delete("username");
-  // Bug fix: send au lieu de invoke — main.js écoute via ipcMain.handle("logout")
-  ipcRenderer.invoke("logout");
-  window.ChangeRoute && ChangeRoute("login");
+async function moveModFile(checkbox, mod, optmodsDir, modsDir) {
+  const sourceDir = checkbox.checked ? optmodsDir : modsDir;
+  const destDir = checkbox.checked ? modsDir : optmodsDir;
+
+  const found = await findFileByHash(sourceDir, mod.hash);
+  const el = document.querySelector(`.moremod[data-hash="${mod.hash}"]`);
+  if (el)
+    checkbox.checked
+      ? el.classList.add("active")
+      : el.classList.remove("active");
+
+  if (found) {
+    const dest = path.join(destDir, path.basename(found));
+    try {
+      await fsp.rename(found, dest);
+      console.log(
+        `Successfully ${checkbox.checked ? "moved" : "removed"} ${mod.name} with hash ${mod.hash}`,
+      );
+      updateOptmods(checkbox.checked, mod.hash);
+      ipcRenderer.invoke("store", "optmods", optmods);
+    } catch (err) {
+      console.error("Error moving file:", err);
+    }
+  }
 }
 
-window.addEventListener("DOMContentLoaded", () => loadSettings());
+async function repareng() {
+  try {
+    const dir = getBaseDirectory();
+    const exists = await fsp
+      .access(dir, fs.constants.F_OK)
+      .then(() => true)
+      .catch(() => false);
+    if (exists) {
+      await fsp.rm(dir, { recursive: true, force: true });
+      alert(await translateAndSave("Opération terminée", lang));
+    } else {
+      console.log("The directory " + dir + " does not exist.");
+    }
+  } catch (err) {
+    console.error(
+      "An error occurred while trying to delete the directory:",
+      err,
+    );
+  }
+}
 
-ipcRenderer.on("store-change", (event, key, value) => {
-  store.set(key, value);
-  loadSettings();
-});
+function updateOptmods(add, hash) {
+  if (add) {
+    optmods.push(hash);
+  } else {
+    optmods = optmods.filter((h) => h !== hash);
+  }
+}
 
-window.browsePath = browsePath;
-window.resetSettings = resetSettings;
-window.logout = logout;
-window.loadSettings = loadSettings;
+(async function () {
+  try {
+    setupLanguageSelector();
+    setupSettingButton();
+    setupRamRange();
+    await populateModsContainer(version);
+  } catch (err) {
+    console.error("An error occurred during initialization:", err);
+  }
+})();

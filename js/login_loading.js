@@ -1,70 +1,54 @@
-/**
- * login_loading.js — Re-auth au démarrage via API custom
- */
-
-const { ipcRenderer } = require("electron");
-const Store = require("electron-store");
-const { API_URL } = require("../js/config");
-
-const store = new Store(); // ✅ simple et correct
-
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-async function reAuth(accessToken) {
-  const cuidUser = store.get("cuidUser") || "";
-
-  try {
-    const body = { accessToken, cuid: cuidUser };
-    const encoded = btoa(JSON.stringify(body));
-
-    const response = await fetch(
-      `${API_URL}/v2/reauth?lang=${store.get("lang") || "fr"}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encoded,
-      },
-    );
-
-    const json = await response.json();
-
-    if (!json || json.error || json.type === "error") {
-      console.log("[reauth] Token invalide, retour au login");
-      logout();
-      return;
-    }
-
-    if (json.type === "reauth.success") {
-      console.log("[reauth] OK :", json.username);
-      // Succès — on laisse la redirection se faire dans onload
-    } else {
-      logout();
-    }
-  } catch (err) {
-    console.error("[reauth] Erreur réseau:", err);
-    // Mode offline : laisser passer
-  }
-}
-
-function logout() {
-  store.delete("authtoken");
-  store.delete("username");
-  setTimeout(() => {
-    ipcRenderer.invoke("login");
-  }, 500);
-}
+const API_URL = "https://refuge-api.onrender.com";
 
 window.onload = async function () {
-  const authtoken = store.get("authtoken");
+  // store, ipcRenderer, instance, hddserial, cuidUser, mac, lang
+  // sont déjà définis par utils.js
+  const authtoken = store.get("authtoken") || null;
 
-  if (authtoken) {
-    await reAuth(authtoken);
-  } else {
-    logout();
-    return;
-  }
+  if (authtoken) await reAuth(authtoken);
 
-  // Attendre un peu puis charger le launcher
-  await delay(800);
+  await delay(500);
   ipcRenderer.invoke("main");
 };
+
+async function reAuth(token) {
+  await hddserial.one(0, async function (err, hddid) {
+    const body = btoa(
+      JSON.stringify({
+        accessToken: token,
+        cuid: cuidUser,
+        mac: mac,
+        hddid: hddid,
+      }),
+    );
+
+    try {
+      const response = await instance.post(
+        `${API_URL}/v2/reauth?lang=${lang}`,
+        body,
+      );
+
+      if (!response || (response.status >= 500 && response.status <= 599)) {
+        logout();
+        return;
+      }
+
+      const data = response.data;
+
+      if (data.error === "error.emailunverified") {
+        alert(data.description);
+        return;
+      }
+
+      if (data.error === "reauth.success") {
+        return;
+      }
+
+      logout();
+    } catch (err) {
+      console.log(err);
+      logout();
+    }
+  });
+}

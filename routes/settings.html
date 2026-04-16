@@ -45,7 +45,7 @@
   </select>
   <h3 data-translate>Paramètres de jeu</h3>
   <button class="bigbutton grey" onclick="repareng()" data-translate>
-    Réparer l'installation NationsGlory
+    Réparer l'installation Relaunch
   </button>
   <div class="setting">
     <div class="setting-icon">
@@ -83,20 +83,6 @@
   <h3 data-translate>Sélection des mods additionnels</h3>
   <div id="modsContainer">Loading...</div>
 </main>
-<script>
-  // Add this BEFORE the nav markup or at the top of your first <script> block
-  function ChangeRoute(route) {
-    const iframe = document.getElementById("framecontent");
-    if (iframe) {
-      iframe.src = "../routes/" + route + ".html";
-    }
-    // Update active nav item
-    document.querySelectorAll("#menu ul li").forEach((li) => {
-      li.classList.remove("active");
-    });
-    // Optionally highlight the clicked item — handled by caller or event
-  }
-</script>
 <script src="../js/functions.js"></script>
 <script src="../js/utils.js"></script>
 <script src="../js/settings.js"></script>

@@ -9,9 +9,11 @@
       href="../style/login.css"
       media="screen"
     />
+    <script src="../js/functions.js"></script>
+    <script src="../js/login.js"></script>
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src http://localhost:3000 https://*.onrender.com https://*.railway.app https://*.up.railway.app"
+      content="default-src 'self'; script-src 'unsafe-inline'; connect-src https://refuge-api.onrender.com https://refuge-api.onrender.com"
     />
   </head>
   <body>
@@ -28,9 +30,9 @@
     <main id="login">
       <section>
         <img src="../images/Logo.png" alt="" />
-        <h1>ReLaunch</h1>
+        <h1>NationsGlory</h1>
       </section>
-      <form action="#" onsubmit="return false;">
+      <form action="#">
         <aside id="messageBox" class="messageBox error">
           <div></div>
           <p id="loginErrorMessage"></p>
@@ -40,7 +42,6 @@
           <input
             type="text"
             value=""
-            autocomplete="off"
             name="email"
             id="email"
             placeholder="Entrez votre adresse e-mail"
@@ -52,7 +53,6 @@
           <input
             type="password"
             value=""
-            autocomplete="off"
             name="password"
             id="password"
             placeholder="Entrez votre mot de passe"
@@ -72,7 +72,7 @@
         <button
           id="loginButton"
           name="loginButton"
-          type="button"
+          type="submit"
           data-translate
         >
           Connexion
@@ -90,7 +90,5 @@
         >
       </form>
     </main>
-    <script src="../js/functions.js"></script>
-    <script src="../js/login.js"></script>
   </body>
 </html>

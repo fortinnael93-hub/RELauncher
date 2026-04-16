@@ -1,76 +1,80 @@
 *,
 *:after,
 *:before {
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    word-wrap: break-word;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  word-wrap: break-word;
 }
 
 *:focus {
-    outline: none;
+  outline: none;
 }
 
 ::-moz-placeholder {
-    color: #999999;
+  color: #999999;
 }
 
 ::-webkit-input-placeholder {
-    color: #999999;
+  color: #999999;
 }
 
 html,
 body {
-    height: 100%;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%
+  height: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 html {
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-}
-
-body{
- color: #9F9FA0;
- font-family: Inter, Open Sans, Segoe UI, sans-serif;
- font-weight: 400;
- font-size: 16px;
- line-height: 24px;
- margin: 0;
- padding: 0;
- user-select: none;
- height:100%;
- text-align: left;
- font-feature-settings: "pnum";
- font-variant-numeric: proportional-nums;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-    animation: fadeInAnimation ease 0.3s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+  color: #9f9fa0;
+  font-family:
+    Inter,
+    Open Sans,
+    Segoe UI,
+    sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  height: 100%;
+  text-align: left;
+  font-feature-settings: "pnum";
+  font-variant-numeric: proportional-nums;
+}
+
+body {
+  animation: fadeInAnimation ease 0.3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 @keyframes fadeInAnimation {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 #body {
-    background: transparent;
-    border-radius: 12px;
-    overflow:hidden;
-    margin: 0;
-    padding: 0;
+  background: transparent;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 article,
 aside,
@@ -85,26 +89,26 @@ menu,
 nav,
 section,
 summary {
-    display: block;
+  display: block;
 }
 
 audio,
 canvas,
 progress,
 video {
-    display: inline-block;
-    vertical-align: baseline;
+  display: inline-block;
+  vertical-align: baseline;
 }
 
 nav,
 ul,
 ol {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 img {
-    border: 0;
+  border: 0;
 }
 
 h1,
@@ -113,20 +117,20 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0;
-    padding: 0;
-    font-weight: 400;
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
 }
 
 a {
-    color: #4487FA;
-    text-decoration: none;
-    background: transparent;
+  color: #4487fa;
+  text-decoration: none;
+  background: transparent;
 }
 
 a:hover {
-    color: #303030;
-    outline: 0;
+  color: #303030;
+  outline: 0;
 }
 
 /*
@@ -136,252 +140,256 @@ a:visited {
 */
 
 a:active {
-    color: #0079C1;
-    outline: 0;
+  color: #0079c1;
+  outline: 0;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
 
 b,
 strong {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 svg:not(:root) {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 button {
-    overflow: visible;
-    line-height: 18.2px;
+  overflow: visible;
+  line-height: 18.2px;
 }
 
 textarea {
-    overflow: auto;
+  overflow: auto;
 }
 
 input,
 textarea,
 select {
-    background: #FAFAFA;
-    border: 1px solid #E3E9EE;
-    padding: 8px;
-    border-radius: 4px;
-    color: #545454;
-    font-family: Inter, Open Sans, Segoe UI, sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+  background: #fafafa;
+  border: 1px solid #e3e9ee;
+  padding: 8px;
+  border-radius: 4px;
+  color: #545454;
+  font-family:
+    Inter,
+    Open Sans,
+    Segoe UI,
+    sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 td,
 th {
-    padding: 0;
+  padding: 0;
 }
 
 .selectable {
-    user-select: text;
+  user-select: text;
 }
 
 #header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99;
-    display: flex;
-    width: 100%;
-    height: 40px;
-    border: none;
-    outline: none;
-    background: transparent;
-    user-select: none;
-    -webkit-user-select: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: flex;
+  width: 100%;
+  height: 40px;
+  border: none;
+  outline: none;
+  background: transparent;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 #header > div {
-    width: 90%;
-    background: transparent;
-    -webkit-app-region: drag;
-    user-select: none;
-    -webkit-user-select: none;
+  width: 90%;
+  background: transparent;
+  -webkit-app-region: drag;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 #header > ul {
-    width: 20%;
-    background: transparent;
-    padding: 10px 10px 0 0;
-    text-align: right;
+  width: 20%;
+  background: transparent;
+  padding: 10px 10px 0 0;
+  text-align: right;
 }
 
 #header > ul > li {
-    display: inline-block;
+  display: inline-block;
 }
 
 #header > ul > li > button {
-    background-color: #505050;
-    opacity: 0.6;
-    border: 0;
-    width: 40px;
-    height: 30px;
-    margin: 0 0 0 -4.5px;
-    cursor: pointer;
+  background-color: #505050;
+  opacity: 0.6;
+  border: 0;
+  width: 40px;
+  height: 30px;
+  margin: 0 0 0 -4.5px;
+  cursor: pointer;
 }
 
 #header > ul > li > button:hover {
-    background-color: #505050;
-    opacity: 1;
+  background-color: #505050;
+  opacity: 1;
 }
 
 #header > ul > li:first-child > button {
-    border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px;
 }
 
 #header > ul > li:nth-child(2) > button {
-    border-radius: 0 0 0 0;
+  border-radius: 0 0 0 0;
 }
 
 #header > ul > li:nth-child(3) > button {
-    border-radius: 0 4px 4px 0;
+  border-radius: 0 4px 4px 0;
 }
 
 #header > ul > li:nth-child(3) > button:hover {
-    background-color: #C0392B;
+  background-color: #c0392b;
 }
 
 #header > ul > li > button > img {
-    display: inline-block;
-    width: 13px;
-    height: 13px;
-    margin: 7px auto 0;
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  margin: 7px auto 0;
 }
 
 #menu {
-    position: absolute;
-    width: 100px;
-    height: 100%;
-    z-index: 99;
-    background: linear-gradient(180deg, #14141B 0%, #09090C 100%);
-    border-right: 2px solid rgba(255, 255, 255, 0.10);
-    border-radius: 10px 0 0 10px;
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  z-index: 99;
+  background: linear-gradient(180deg, #14141b 0%, #09090c 100%);
+  border-right: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px 0 0 10px;
 }
 
 #menu > svg {
-    width: 61.9px;
-    height: 71.9px;
-    margin: 20px 0 0 31px;
+  width: 61.9px;
+  height: 71.9px;
+  margin: 20px 0 0 31px;
 }
 
 #menu > ul {
-    border-top: 3px solid #292930;
-    margin: 0 20px 0 20px;
+  border-top: 3px solid #292930;
+  margin: 0 20px 0 20px;
 }
 
 #menu > ul > li {
-    position: relative;
-    display: flex;
-    width: 60px;
-    height: 60px;
-    border-radius: 8px;
-    background-color: #26262A;
-    border: 0 solid #26262A;
-    margin: 20px 0 0 0;
-    align-content:center;
-    cursor: pointer;
-    text-align: center;
-    justify-content: center;
+  position: relative;
+  display: flex;
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  background-color: #26262a;
+  border: 0 solid #26262a;
+  margin: 20px 0 0 0;
+  align-content: center;
+  cursor: pointer;
+  text-align: center;
+  justify-content: center;
 }
 
 #menu > ul > li:active,
 #menu > ul > li.active {
-    background: #737373;
-    outline: thick solid rgba(255, 255, 255, 0.05);
+  background: #737373;
+  outline: thick solid rgba(255, 255, 255, 0.05);
 }
 
 #menu #avatar {
-   display:flex;
-   align-content:center;
-   align-items: center;
+  display: flex;
+  align-content: center;
+  align-items: center;
 }
 #menu #avatar img {
-    width: 2.5rem;
+  width: 4rem;
+  image-rendering: pixelated;
 }
 
-#menu > ul > li:nth-child(4) > span {
-    display: block;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 12px;
-    height: 12px;
-    border-radius: 100px;
-    border: 3.5px solid #375647;
-    background: #67FF6D;
-
+#menu > ul > li:nth-child(3) > span {
+  display: block;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 100px;
+  border: 3.5px solid #375647;
+  background: #67ff6d;
 }
 .is-pulse:before {
-    position: absolute;
-    content: "";
-    top: 50%;
-    left: 50%;
-    border-radius: 50%;
-    width: 2rem;
-    height: 2rem;
-    opacity: .75;
-    transform: translate(-50%, -50%) scale(0);
-    transform-origin: center;
-    -webkit-animation: indicator-pulse 2s linear forwards infinite;
-    animation: indicator-pulse 2s linear forwards infinite;
-    background: #009933;
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  opacity: 0.75;
+  transform: translate(-50%, -50%) scale(0);
+  transform-origin: center;
+  -webkit-animation: indicator-pulse 2s linear forwards infinite;
+  animation: indicator-pulse 2s linear forwards infinite;
+  background: #009933;
+}
+
+#menu > ul > li:nth-child(3) {
+  position: absolute;
+  bottom: 100px;
+  left: 20px;
 }
 
 #menu > ul > li:nth-child(4) {
-    position: absolute;
-    bottom: 100px;
-    left: 20px;
-}
-
-#menu > ul > li:nth-child(5) {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
 }
 .messageBox {
-    display: none;
-    border-radius: 8px;
-    color: #FFFFFF;
+  display: none;
+  border-radius: 8px;
+  color: #ffffff;
 }
 
 .messageBox > div {
-    content: url(../images/Icon_Warning.svg);
-    padding: 8px;
-    border-radius: 8px 0 0  8px;
+  content: url(../images/Icon_Warning.svg);
+  padding: 8px;
+  border-radius: 8px 0 0 8px;
 }
 
 .messageBox > p {
-    margin: 7px 0 0 12px;
+  margin: 7px 0 0 12px;
 }
 
 .infos {
-    background: #26262A;
-    border: 2px solid rgba(255, 255, 255, 0.10);
+  background: #26262a;
+  border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .infos > div {
-    background: #737373;
+  background: #737373;
 }
 
 .error {
-    background: #643636;
-    border: 2px solid rgba(251, 59, 59, 0.1);
+  background: #643636;
+  border: 2px solid rgba(251, 59, 59, 0.1);
 }
 
 .error > div {
-    background: #802A2A;
+  background: #802a2a;
 }

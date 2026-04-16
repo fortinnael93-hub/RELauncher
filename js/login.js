@@ -1,49 +1,57 @@
-/**
- * login.js — Connexion via API custom
- */
-
 const { ipcRenderer } = require("electron");
 const { machineIdSync } = require("node-machine-id");
 const getmac = require("getmac");
 const hddserial = require("hddserial");
 const Store = require("electron-store");
-const { API_URL } = require("../js/config");
-
 const store = new Store();
+const getSystemLocale = require("system-locale");
+const { translateAndSave, translatePageElements } = require("../js/translate");
+
+const API_URL = "https://refuge-api.onrender.com";
 
 let accounts = store.get("accounts");
 if (!Array.isArray(accounts)) accounts = [];
 
-let loginButton, email, password, messageBox, errors;
-let hddidUser = "";
+let loginButton, email, password, errors, messageBox, hddidUser;
 let lang = store.get("lang") || "fr";
 
-hddserial.first(0, function (err, serial) {
-  hddidUser = serial || "";
+hddserial.one(0, function (err, serial) {
+  hddidUser = serial;
 });
 
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 async function getLang() {
-  if (store.get("lang") && store.get("lang") !== "undefined") {
-    return store.get("lang");
-  }
-  return "fr";
+  await getSystemLocale().then(async (locale) => {
+    if (!store.get("lang") || store.get("lang") === "undefined") {
+      if (locale.includes("fr")) {
+        translatePageElements("fr");
+        await ipcRenderer.invoke("store", "lang", "fr");
+        lang = "fr";
+      } else if (locale.includes("es")) {
+        translatePageElements("es");
+        await ipcRenderer.invoke("store", "lang", "es");
+        lang = "es";
+      } else {
+        translatePageElements("en");
+        await ipcRenderer.invoke("store", "lang", "en");
+        lang = "en";
+      }
+    } else {
+      lang = store.get("lang");
+      translatePageElements(lang);
+    }
+  });
 }
 
 function WindowClose() {
   ipcRenderer.send("WindowClose");
 }
 
-function validateEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-function showError(msg) {
-  messageBox.style.display = "flex";
-  errors.innerHTML = msg;
-}
-
 window.onload = async function () {
-  lang = await getLang();
+  await getLang();
 
   loginButton = document.getElementById("loginButton");
   email = document.getElementById("email");
@@ -51,91 +59,110 @@ window.onload = async function () {
   messageBox = document.getElementById("messageBox");
   errors = document.getElementById("loginErrorMessage");
 
+  // Bloque le submit du formulaire
+  const form = document.querySelector("form");
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+    });
+  }
+
   loginButton.onclick = async function (event) {
     event.preventDefault();
 
     if (!email.value) {
-      showError("Veuillez renseigner une adresse email");
+      messageBox.style.display = "flex";
+      errors.innerHTML = await translateAndSave(
+        "Veuillez renseigner une adresse email",
+        lang,
+      );
       return;
     }
     if (!password.value) {
-      showError("Veuillez renseigner un mot de passe");
+      messageBox.style.display = "flex";
+      errors.innerHTML = await translateAndSave(
+        "Veuillez renseigner un mot de passe",
+        lang,
+      );
       return;
     }
     if (!validateEmail(email.value)) {
-      showError("Le format de votre adresse email est incorrect");
+      messageBox.style.display = "flex";
+      errors.innerHTML = await translateAndSave(
+        "Le format de votre adresse email est incorrect",
+        lang,
+      );
       return;
     }
+
+    const cuidUser = machineIdSync();
+    const macUser = getmac.default();
+    const body = {
+      email: email.value,
+      password: password.value,
+      cuid: cuidUser,
+      mac: macUser,
+      hddid: hddidUser,
+    };
 
     messageBox.style.display = "none";
     loginButton.innerHTML = "Connexion...";
 
-    try {
-      const cuidUser = machineIdSync();
-      let macUser = "";
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", `${API_URL}/v2/auth?lang=${lang}`);
+
+    xhr.onload = function () {
+      let jsonResponse;
       try {
-        macUser = getmac.default();
+        jsonResponse = JSON.parse(xhr.responseText);
       } catch (e) {
-        // Fallback si getmac.default() échoue
-        try {
-          macUser = await getmac();
-        } catch (e2) {
-          console.warn("[login] Impossible d'obtenir l'adresse MAC");
-          macUser = "";
-        }
-      }
-
-      const body = {
-        email: email.value,
-        password: password.value,
-        cuid: cuidUser,
-        mac: macUser,
-        hddid: hddidUser,
-      };
-
-      const response = await fetch(`${API_URL}/v2/auth?lang=${lang}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-
-      if (!response.ok) {
-        throw new Error(
-          `Erreur API: ${response.status} ${response.statusText}`,
-        );
-      }
-      const json = await response.json();
-      console.log("[login] Réponse API:", json);
-
-      if (json.error) {
-        console.error("[login] Erreur API:", json.error);
-        showError(json.error);
+        messageBox.style.display = "flex";
+        errors.innerHTML = "Erreur serveur (réponse invalide)";
         loginButton.innerHTML = "Connexion";
         return;
       }
 
-      if (json.type === "auth.success" && json.token) {
-        await ipcRenderer.invoke("store", "authtoken", json.token);
-        await ipcRenderer.invoke("store", "username", json.username);
+      console.log("Réponse API:", jsonResponse);
 
-        const idx = accounts.findIndex((a) => a.username === json.username);
+      // Succès
+      if (jsonResponse.type === "auth.success" || jsonResponse.error === null) {
+        ipcRenderer.invoke("store", "authtoken", jsonResponse.token);
+        ipcRenderer.invoke("store", "username", jsonResponse.username);
+
+        const idx = accounts.findIndex(
+          (a) => a.username === jsonResponse.username,
+        );
         if (idx !== -1) accounts.splice(idx, 1);
-        accounts.push({ username: json.username, token: json.token });
-        await ipcRenderer.invoke("store", "accounts", accounts);
-
-        await ipcRenderer.invoke("loginLoading");
-      } else if (json.error) {
-        showError(json.error);
-        loginButton.innerHTML = "Connexion";
-      } else {
-        console.error("[login] Réponse API invalide:", json);
-        showError("Erreur lors de la connexion");
-        loginButton.innerHTML = "Connexion";
+        accounts.push({
+          username: jsonResponse.username,
+          token: jsonResponse.token,
+        });
+        ipcRenderer.invoke("store", "accounts", accounts);
+        ipcRenderer.invoke("loginLoading");
+        return;
       }
-    } catch (err) {
-      console.error("[login] Erreur réseau:", err);
-      showError("Impossible de contacter le serveur. Vérifie ta connexion.");
+
+      // Double auth
+      if (jsonResponse.error === "2AuthenticationRequired") {
+        ipcRenderer.invoke("store", "email", email.value);
+        ipcRenderer.invoke("store", "password", password.value);
+        ipcRenderer.invoke("doubleAuth");
+        return;
+      }
+
+      // Erreur
+      messageBox.style.display = "flex";
+      errors.innerHTML =
+        jsonResponse.error || jsonResponse.description || "Erreur inconnue";
       loginButton.innerHTML = "Connexion";
-    }
+    };
+
+    xhr.onerror = function () {
+      messageBox.style.display = "flex";
+      errors.innerHTML = "Impossible de contacter le serveur";
+      loginButton.innerHTML = "Connexion";
+    };
+
+    xhr.send(btoa(JSON.stringify(body)));
   };
 };

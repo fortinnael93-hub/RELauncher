@@ -1,47 +1,72 @@
-<link rel="stylesheet" type="text/css" href="../style/style.css" media="screen"/>
-<link rel="stylesheet" type="text/css" href="../style/settings.css" media="screen"/>
-<link rel="stylesheet" type="text/css" href="../style/screenshots.css" media="screen"/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="../style/style.css"
+  media="screen"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="../style/settings.css"
+  media="screen"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="../style/screenshots.css"
+  media="screen"
+/>
 <header id="headerSettings">
-	<h2>Paramètres</h2>
+  <h2>Paramètres</h2>
 </header>
 <nav id="sidebar">
-	<ul>
-		<li onclick="ChangeRoute('settings')" data-translate>Paramètres</li>
-		<li onclick="ChangeRoute('skins')" data-translate>Skins</li>
-		<li onclick="ChangeRoute('accounts')" data-translate>Comptes</li>
-		<li onclick="ChangeRoute('resourcepacks')" data-translate>Packs de ressources</li>
-		<li onclick="ChangeRoute('shaderpacks')" data-translate>Packs de shaders</li>
-		<li onclick="ChangeRoute('screenshots')" data-translate class="active">Screenshots</li>
-		<li onclick="ChangeRoute('console')" data-translate>Console</li>
-		<li onclick="ChangeRoute('crashreports')" data-translate>Rapports de crash</li>
-		<li onclick="ChangeRoute('about')" data-translate>À propos</li>
-		<li onclick="logout()" data-translate>Déconnexion</li>
-	</ul>
+  <ul>
+    <li onclick="ChangeRoute('settings')" data-translate>Paramètres</li>
+    <li onclick="ChangeRoute('skins')" data-translate>Skins</li>
+    <li onclick="ChangeRoute('accounts')" data-translate>Comptes</li>
+    <li onclick="ChangeRoute('resourcepacks')" data-translate>
+      Packs de ressources
+    </li>
+    <li onclick="ChangeRoute('shaderpacks')" data-translate>
+      Packs de shaders
+    </li>
+    <li onclick="ChangeRoute('screenshots')" data-translate class="active">
+      Captures d'écran
+    </li>
+    <li onclick="ChangeRoute('console')" data-translate>Console</li>
+    <li onclick="ChangeRoute('crashreports')" data-translate>
+      Rapports de crash
+    </li>
+    <li onclick="ChangeRoute('about')" data-translate>À propos</li>
+    <li onclick="logout()" data-translate>Déconnexion</li>
+  </ul>
 </nav>
 <div id="imageModal" class="modal">
-	<span class="close">&times;</span>
-	<img class="modal-content" id="fullImage">
-	<div id="modalFooter">
-		<p id="imageInfo"></p>
-		<button id="editNameBtn" data-translate>Editer le nom</button>
-		<button id="deleteFileBtn" data-translate>Delete</button>
-		<button id="uploadBtn"><img src="../images/prime.png" alt="Prime Icon"> <span data-translate>Héberger</span></button>
-	</div>
+  <span class="close">&times;</span>
+  <img class="modal-content" id="fullImage" />
+  <div id="modalFooter">
+    <p id="imageInfo"></p>
+    <button id="editNameBtn" data-translate>Editer le nom</button>
+    <button id="deleteFileBtn" data-translate>Delete</button>
+    <button id="uploadBtn">
+      <img src="../images/prime.png" alt="Prime Icon" />
+      <span data-translate>Héberger</span>
+    </button>
+  </div>
 </div>
 <div id="renameModal" class="modal">
-	<div class="modal-content" id="renameImage">
-		<span class="close">&times;</span>
-		<p id="renamePrompt"></p>
-		<input type="text" id="newNameInput">
-		<button id="confirmRename">OK</button>
-	</div>
+  <div class="modal-content" id="renameImage">
+    <span class="close">&times;</span>
+    <p id="renamePrompt"></p>
+    <input type="text" id="newNameInput" />
+    <button id="confirmRename">OK</button>
+  </div>
 </div>
 <main id="settings">
-	<h2 data-translate>Screenshots</h2>
-	<p data-translate>Toutes les captures réalisées via le F2.</p>
-	<div id="screenshots" class="screenshots-grid">
-	</div>
+  <h2 data-translate>Screenshots</h2>
+  <p data-translate>Toutes les captures réalisées via le F2.</p>
+  <div id="screenshots" class="screenshots-grid"></div>
 </main>
 <script src="../js/functions.js"></script>
 <script src="../js/utils.js"></script>
-<script src="../js/screenshots.js" async></script>
+<script src="../js/screenshots.js"></script>

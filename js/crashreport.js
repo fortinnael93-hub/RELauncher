@@ -63,7 +63,7 @@ function _0x54de(_0x200c99, _0x54f6a6) {
   );
 }
 const generateCrash =
-  "https://apiv2.nationsglory.fr/launcher/uploadCrash?lang=" +
+  "https://refuge-api.onrender.com/launcher/uploadCrash?lang=" +
   lang +
   _0x23509f(0xad) +
   cuidUser +

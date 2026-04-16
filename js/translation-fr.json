@@ -1,0 +1,506 @@
+[
+  {
+    "text": "Découvre notre chaine Twitch",
+    "translation": "Découvre notre chaine Twitch"
+  },
+  {
+    "text": "joueurs connectés",
+    "translation": "joueurs connectés"
+  },
+  {
+    "text": "Notes de mise à jour",
+    "translation": "Notes de mise à jour"
+  },
+  {
+    "text": "Lancer",
+    "translation": "Lancer"
+  },
+  {
+    "text": "Version",
+    "translation": "Version"
+  },
+  {
+    "text": "Aucune diffusion est en cours sur les plateformes",
+    "translation": "Aucune diffusion est en cours sur les plateformes"
+  },
+  {
+    "text": "N'hésite pas à promouvoir ton contenu en incluant @NationsGloryFR dans le titre de ta diffusion en direct afin d'apparaitre sur cette page.",
+    "translation": "N'hésite pas à promouvoir ton contenu en incluant @NationsGloryFR dans le titre de ta diffusion en direct afin d'apparaitre sur cette page."
+  },
+  {
+    "text": "Paramètres",
+    "translation": "Paramètres"
+  },
+  {
+    "text": "Skins",
+    "translation": "Skins"
+  },
+  {
+    "text": "Recommendé",
+    "translation": "Recommandé"
+  },
+  {
+    "text": "Comptes",
+    "translation": "Comptes"
+  },
+  {
+    "text": "Packs de ressources",
+    "translation": "Packs de ressources"
+  },
+  {
+    "text": "Packs de shaders",
+    "translation": "Packs de shaders"
+  },
+  {
+    "text": "Console",
+    "translation": "Console"
+  },
+  {
+    "text": "Rapports de crash",
+    "translation": "Rapports de crash"
+  },
+  {
+    "text": "À propos",
+    "translation": "À propos"
+  },
+  {
+    "text": "Déconnexion",
+    "translation": "Déconnexion"
+  },
+  {
+    "text": "Général",
+    "translation": "Général"
+  },
+  {
+    "text": "Langue de l'application",
+    "translation": "Langue de l'application"
+  },
+  {
+    "text": "Français",
+    "translation": "Français"
+  },
+  {
+    "text": "Anglais",
+    "translation": "Anglais"
+  },
+  {
+    "text": "Espagnol",
+    "translation": "Espagnol"
+  },
+  {
+    "text": "Paramètres de jeu",
+    "translation": "Paramètres de jeu"
+  },
+  {
+    "text": "Réparer l'installation NationsGlory",
+    "translation": "Réparer l'installation NationsGlory"
+  },
+  {
+    "text": "Mémoire RAM",
+    "translation": "Mémoire RAM"
+  },
+  {
+    "text": "Gérez la quantité de RAM que vous souhaitez attribuer à votre jeu.",
+    "translation": "Gérez la quantité de RAM que vous souhaitez attribuer à votre jeu."
+  },
+  {
+    "text": "\n\t\t\t\t\tDavantage de mémoire RAM à contribuera à la stabilité et aux performances du jeu. Toutefois, il est important de noter qu'une quantité démesurée de RAM n'est pas indispensable.\n\t\t\t\t",
+    "translation": "\n\t\t\t\t\tDavantage de mémoire RAM à contribuera à la stabilité et aux performances du jeu. Toutefois, il est important de noter qu'une quantité démesurée de RAM n'est pas indispensable.\n\t\t\t\t"
+  },
+  {
+    "text": "\n\t\t\t\t2 Go  de RAM recommandée\n\t\t\t",
+    "translation": "\n\t\t\t\t2 Go de RAM recommandée\n\t\t\t"
+  },
+  {
+    "text": "Sélection des mods additionnels",
+    "translation": "Sélection des mods additionnels"
+  },
+  {
+    "text": "Modification du skin",
+    "translation": "Modification du skin"
+  },
+  {
+    "text": "Actif",
+    "translation": "Actif"
+  },
+  {
+    "text": "Le fichier doit être au format .png et conforme au modèle \"Steve\" de Minecraft, avec une résolution ne dépassant pas 128x128px.\n            ",
+    "translation": "Le fichier doit être au format .png et conforme au modèle \"Steve\" de Minecraft, avec une résolution ne dépassant pas 128x128px.\n            "
+  },
+  {
+    "text": "Glisse ton fichier PNG ici...",
+    "translation": "Glisse ton fichier PNG ici..."
+  },
+  {
+    "text": "Skins sauvegardés",
+    "translation": "Skins sauvegardés"
+  },
+  {
+    "text": "En cours d'utilisation",
+    "translation": "En cours d'utilisation"
+  },
+  {
+    "text": "Passe rapidement d'un compte à l'autre en un clic",
+    "translation": "Passe rapidement d'un compte à l'autre en un clic"
+  },
+  {
+    "text": "Ajouter un compte",
+    "translation": "Ajouter un compte"
+  },
+  {
+    "text": "Fermer",
+    "translation": "Fermer"
+  },
+  {
+    "text": "Entre tes identifiants pour ajouter ton compte",
+    "translation": "Entre tes identifiants pour ajouter ton compte"
+  },
+  {
+    "text": "Adresse E-mail",
+    "translation": "Adresse E-mail"
+  },
+  {
+    "text": "Entrez votre adresse e-mail",
+    "translation": "Saisissez votre adresse e-mail"
+  },
+  {
+    "text": "Mot de passe",
+    "translation": "Mot de passe"
+  },
+  {
+    "text": "Entrez votre mot de passe",
+    "translation": "Entrez votre mot de passe"
+  },
+  {
+    "text": "Mot de passe oublié ?",
+    "translation": "Mot de passe oublié ?"
+  },
+  {
+    "text": "Réinitialiser le mot de passe.",
+    "translation": "Réinitialiser le mot de passe."
+  },
+  {
+    "text": "Connexion",
+    "translation": "Connexion"
+  },
+  {
+    "text": "Vous n’avez pas de compte ?",
+    "translation": "Vous n’avez pas de compte ?"
+  },
+  {
+    "text": "Veuillez renseigner un mot de passe",
+    "translation": "Veuillez renseigner un mot de passe"
+  },
+  {
+    "text": "Créer un compte.",
+    "translation": "Créer un compte."
+  },
+  {
+    "text": "Le format de votre adresse email est incorrect",
+    "translation": "Le format de votre adresse email est incorrect"
+  },
+  {
+    "text": "Glisse ton fichier ZIP ici...",
+    "translation": "Glisse ton fichier ZIP ici..."
+  },
+  {
+    "text": "Liste",
+    "translation": "Liste"
+  },
+  {
+    "text": " Retrouve la liste de tes packs de ressources",
+    "translation": " Retrouve la liste de tes packs de ressources"
+  },
+  {
+    "text": "Retrouve la liste de tes packs de shaders",
+    "translation": "Retrouve la liste de tes packs de shaders"
+  },
+  {
+    "text": "Ne partage le contenu de cette console qu'avec le support NationsGlory.",
+    "translation": "Ne partage le contenu de cette console qu'avec le support NationsGlory."
+  },
+  {
+    "text": "Liste des rapports de crash",
+    "translation": "Liste des rapports de crash"
+  },
+  {
+    "text": "Contacter le support",
+    "translation": "Contacter le support"
+  },
+  {
+    "text": "Vider le dossier des rapports de crash",
+    "translation": "Vider le dossier des rapports de crash"
+  },
+  {
+    "text": "Contrat d'utilisation relatif à l'application",
+    "translation": "Contrat d'utilisation relatif à l'application"
+  },
+  {
+    "text": "Vérification en cours",
+    "translation": "Vérification en cours"
+  },
+  {
+    "text": "Jeu en cours...",
+    "translation": "Jeu en cours..."
+  },
+  {
+    "text": "Double Authentificator",
+    "translation": "Double authentificateur"
+  },
+  {
+    "text": "Authentification à double facteur",
+    "translation": "Authentification à double facteur"
+  },
+  {
+    "text": "Ce compte est protégé par une vérification en deux étapes. Veuillez saisir les 6 chiffres pour poursuivre.",
+    "translation": "Ce compte est protégé par une vérification en deux étapes. Veuillez saisir les 6 chiffres pour poursuivre."
+  },
+  {
+    "text": "Vous n'arrivez pas à vous connecter ? Retour sur la connexion",
+    "translation": "Vous n'arrivez pas à vous connecter ? Retour sur la connexion"
+  },
+  {
+    "text": "Retour sur la connexion",
+    "translation": "Retour sur la connexion"
+  },
+  {
+    "text": "Vous n'arrivez pas à vous connecter ? ",
+    "translation": "Vous n'arrivez pas à vous connecter ?"
+  },
+  {
+    "text": "<button onclick=\"sendCode();\" id=\"sendCode\" data-translate>Envoyer un SMS</button><button onclick=\"validateCode();\" data-translate>Valider</button>",
+    "translation": "<button onclick=\"sendCode() ;\" id=\"sendCode\" data-translate>Envoyer un SMS</button><button onclick=\"validateCode() ;\" data-translate>Valider</button>"
+  },
+  {
+    "text": "Votre code est incorrect",
+    "translation": "Votre code est incorrect"
+  },
+  {
+    "text": "Code envoyé",
+    "translation": "Code envoyé"
+  },
+  {
+    "text": "Aucun rapport de crash",
+    "translation": "Aucun rapport de crash"
+  },
+  {
+    "text": "Aucun rapport de crash pour le moment",
+    "translation": "Aucun rapport de crash pour le moment"
+  },
+  {
+    "text": "Tous les fichiers ont été effacés.",
+    "translation": "Tous les fichiers ont été effacés."
+  },
+  {
+    "text": "Téléchargement de la mise à jour...",
+    "translation": "Téléchargement de la mise à jour..."
+  },
+  {
+    "text": "Mise à jour",
+    "translation": "Mise à jour"
+  },
+  {
+    "text": "Installation dans 5 secondes...",
+    "translation": "Installation dans 5 secondes..."
+  },
+  {
+    "text": "<p>Lance une première fois le jeu po ur accéder à cette partie.</p>",
+    "translation": "<p>Lance une première fois le jeu po ur accéder à cette partie.</p>"
+  },
+  {
+    "text": "Lance une première fois le jeu po ur accéder à cette partie.",
+    "translation": "Lance une première fois le jeu po ur accéder à cette partie."
+  },
+  {
+    "text": "Jeu en cours",
+    "translation": "Jeu en cours"
+  },
+  {
+    "text": "Veuillez renseigner une adresse email",
+    "translation": "Veuillez renseigner une adresse email"
+  },
+  {
+    "text": "Rapport de Crash",
+    "translation": "Rapport de Crash"
+  },
+  {
+    "text": "Crash report",
+    "translation": "Rapport d'accident"
+  },
+  {
+    "text": "Un crash vient de survenir !",
+    "translation": "Un crash vient de survenir !"
+  },
+  {
+    "text": "Recherche d'une solution",
+    "translation": "Recherche d'une solution"
+  },
+  {
+    "text": "Rapport de Crash à communiquer au support.",
+    "translation": "Rapport de Crash à communiquer au support."
+  },
+  {
+    "text": "Recherche d'une solution....",
+    "translation": "Recherche d'une solution...."
+  },
+  {
+    "text": "Recherche d'une solution dans la base de donnée du support.",
+    "translation": "Recherche d'une solution dans la base de donnée du support."
+  },
+  {
+    "text": "Téléchargement en cours",
+    "translation": "Téléchargement en cours"
+  },
+  {
+    "text": "<button onclick=\"validateCode();\" style=\"width:100%;\" data-translate>Valider</button>",
+    "translation": "<button onclick=\"validateCode();\" style=\"width:100%;\" data-translate>Valider</button>"
+  },
+  {
+    "text": "<p>Lance une première fois le jeu pour accéder à cette partie.</p>",
+    "translation": "<p>Lance une première fois le jeu pour accéder à cette partie.</p>"
+  },
+  {
+    "text": "Lance une première fois le jeu pour accéder à cette partie.",
+    "translation": "Lance une première fois le jeu pour accéder à cette partie."
+  },
+  {
+    "text": "Aucune description",
+    "translation": "Aucune description"
+  },
+  {
+    "text": "Edit Name",
+    "translation": "Edit Nom"
+  },
+  {
+    "text": "Delete",
+    "translation": "Supprimer"
+  },
+  {
+    "text": "Upload",
+    "translation": "Télécharger"
+  },
+  {
+    "text": "Screenshots",
+    "translation": "Captures d'écran"
+  },
+  {
+    "text": "Toutes les captures réalisées via le F2.",
+    "translation": "Toutes les captures réalisées via le F2."
+  },
+  {
+    "text": "Editer le nom",
+    "translation": "Editer le nom"
+  },
+  {
+    "text": "Enter the new name for the file:",
+    "translation": "Saisissez le nouveau nom du fichier :"
+  },
+  {
+    "text": "Héberger",
+    "translation": "Héberger"
+  },
+  {
+    "text": " Héberger",
+    "translation": " Héberger"
+  },
+  {
+    "text": "\n          Connexion\n        ",
+    "translation": "\n          Connexion\n        "
+  },
+  {
+    "text": "\n        Lancer\n      ",
+    "translation": "\n        Lancer\n      "
+  },
+  {
+    "text": "Chargement...",
+    "translation": "Chargement..."
+  },
+  {
+    "text": "\n      Packs de ressources\n    ",
+    "translation": "\n      Packs de ressources\n    "
+  },
+  {
+    "text": "\n      Packs de shaders\n    ",
+    "translation": "\n      Packs de shaders\n    "
+  },
+  {
+    "text": "\n      Rapports de crash\n    ",
+    "translation": "\n      Rapports de crash\n    "
+  },
+  {
+    "text": "\n      Le fichier doit être au format .png et conforme au modèle \"Steve\" de\n      Minecraft, avec une résolution ne dépassant pas 128x128px.\n    ",
+    "translation": "\n      Le fichier doit être au format .png et conforme au modèle \"Steve\" de\n      Minecraft, avec une résolution ne dépassant pas 128x128px.\n    "
+  },
+  {
+    "text": "Retrouve la liste de tes packs de ressources",
+    "translation": "Retrouve la liste de tes packs de ressources"
+  },
+  {
+    "text": "Aucun skin disponible. Télécharge un skin pour commencer !",
+    "translation": "Aucun skin disponible. Télécharge un skin pour commencer !"
+  },
+  {
+    "text": "\n      N'hésite pas à promouvoir ton contenu en incluant\n      @NationsGloryFR dans le titre de ta diffusion en direct afin\n      d'apparaitre sur cette page.\n    ",
+    "translation": "\n      N'hésite pas à promouvoir ton contenu en incluant\n      @NationsGloryFR dans le titre de ta diffusion en direct afin\n      d'apparaitre sur cette page.\n    "
+  },
+  {
+    "text": "\n        Découvre notre chaine Twitch\n      ",
+    "translation": "\n        Découvre notre chaine Twitch\n      "
+  },
+  {
+    "text": "\n      Screenshots\n    ",
+    "translation": "\n      Screenshots\n    "
+  },
+  {
+    "text": "\n      Console\n    ",
+    "translation": "\n      Console\n    "
+  },
+  {
+    "text": "\n    Ne partage le contenu de cette console qu'avec le support NationsGlory.\n  ",
+    "translation": "\n    Ne partage le contenu de cette console qu'avec le support NationsGlory.\n  "
+  },
+  {
+    "text": "\n      À propos\n    ",
+    "translation": "\n      À propos\n    "
+  },
+  {
+    "text": "Opération terminée",
+    "translation": "Opération terminée"
+  },
+  {
+    "text": "\n      N'hésite pas à promouvoir ton contenu en incluant\n      @RefugeEmeraudien dans le titre de ta diffusion en direct afin\n      d'apparaitre sur cette page.\n    ",
+    "translation": "\n      N'hésite pas à promouvoir ton contenu en incluant\n      @RefugeEmeraudien dans le titre de ta diffusion en direct afin\n      d'apparaitre sur cette page.\n    "
+  },
+  {
+    "text": "\n      N'hésite pas à promouvoir ton contenu en incluant\n      @Le_Refuge_Emeraudien dans le titre de ta diffusion en direct afin\n      d'apparaitre sur cette page.\n    ",
+    "translation": "\n      N'hésite pas à promouvoir ton contenu en incluant\n      @Le_Refuge_Emeraudien dans le titre de ta diffusion en direct afin\n      d'apparaitre sur cette page.\n    "
+  },
+  {
+    "text": "\n        Découvre notre chaîne Twitch\n      ",
+    "translation": "\n        Découvre notre chaîne Twitch\n      "
+  },
+  {
+    "text": "\n      Captures d'écran\n    ",
+    "translation": "\n      Captures d'écran\n    "
+  },
+  {
+    "text": "\n      Paramètres\n    ",
+    "translation": "\n      Paramètres\n    "
+  },
+  {
+    "text": "\n    Réparer l'installation Relaunch\n  ",
+    "translation": "\n    Réparer l'installation Relaunch\n  "
+  },
+  {
+    "text": "\n        Gérez la quantité de RAM que vous souhaitez attribuer à votre jeu.\n      ",
+    "translation": "\n        Gérez la quantité de RAM que vous souhaitez attribuer à votre jeu.\n      "
+  },
+  {
+    "text": "\n          Davantage de mémoire RAM à contribuera à la stabilité et aux\n          performances du jeu. Toutefois, il est important de noter qu'une\n          quantité démesurée de RAM n'est pas indispensable.\n        ",
+    "translation": "\n          Davantage de mémoire RAM à contribuera à la stabilité et aux\n          performances du jeu. Toutefois, il est important de noter qu'une\n          quantité démesurée de RAM n'est pas indispensable.\n        "
+  },
+  {
+    "text": "\n        2 Go  de RAM recommandée\n      ",
+    "translation": "\n        2 Go  de RAM recommandée\n      "
+  }
+]

@@ -4,10 +4,8 @@ const {
   ipcMain,
   session,
   globalShortcut,
-  screen,
   Menu,
   Tray,
-  Notification,
   shell,
   dialog,
   clipboard,
@@ -18,19 +16,17 @@ const { machineIdSync } = require("node-machine-id");
 const Store = require("electron-store");
 const store = new Store();
 const axios = require("axios");
-const { exec } = require("child_process");
 
-let window;
+let mainWindow;
 let hiddenRadioWindow;
 let modalWindow;
-let alertWindow;
 
 let versionFromStore = store.get("version") || "stable";
 
 const clientId = "450747976868954113";
-
 DiscordRPC.register(clientId);
 const rpc = new DiscordRPC.Client({ transport: "ipc" });
+let rpcReady = false; // ✅ garde une trace si RPC est connecté
 
 let data = {
   NGRadioPlaying: false,
@@ -47,9 +43,77 @@ let data = {
   launcherVersion: app.getVersion(),
 };
 
-// ── Création de la fenêtre principale ─────────────────────────────────────────
+// ── Instance unique ─────────────────────────────────────────────────────────
+const gotTheLock = app.requestSingleInstanceLock();
+if (!gotTheLock) {
+  app.quit();
+} else {
+  app.on("second-instance", () => {
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      if (!mainWindow.isVisible()) mainWindow.show();
+      mainWindow.focus();
+    }
+  });
+}
+
+// ── Traduction ──────────────────────────────────────────────────────────────
+ipcMain.handle("translate", async (event, text, lang) => {
+  if (lang === "fr") return text;
+  try {
+    const res = await axios.post("https://libretranslate.de/translate", {
+      q: text,
+      source: "fr",
+      target: lang,
+      format: "text",
+    });
+    return res.data.translatedText;
+  } catch (e) {
+    console.error("translate error:", e.message);
+    return text;
+  }
+});
+
+// ── Radio cachée ────────────────────────────────────────────────────────────
+// ✅ Les listeners ipcMain.on sont enregistrés UNE SEULE FOIS ici
+let radioListenersRegistered = false;
+
+const createRadio = () => {
+  if (hiddenRadioWindow && !hiddenRadioWindow.isDestroyed()) return;
+
+  hiddenRadioWindow = new BrowserWindow({
+    show: false,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+      devTools: false,
+    },
+  });
+  hiddenRadioWindow.loadFile(`${__dirname}/routes/hiddenradio.html`);
+
+  // ✅ On n'enregistre les listeners qu'une seule fois
+  if (!radioListenersRegistered) {
+    radioListenersRegistered = true;
+
+    ipcMain.on("NGRadio-state-changed", () => {
+      if (!hiddenRadioWindow || hiddenRadioWindow.isDestroyed()) {
+        createRadio();
+      }
+      hiddenRadioWindow.webContents.send("NGRadio-playpause");
+    });
+
+    ipcMain.on("NGRadio-volume", (event, volume) => {
+      if (hiddenRadioWindow && !hiddenRadioWindow.isDestroyed()) {
+        hiddenRadioWindow.webContents.send("NGRadio-volume", volume);
+      }
+      data.NGRadioVolume = volume;
+    });
+  }
+};
+
+// ── Création de la fenêtre principale ───────────────────────────────────────
 const createWindow = () => {
-  window = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     transparent: true,
     width: 540,
     height: 690,
@@ -66,23 +130,22 @@ const createWindow = () => {
     },
   });
 
-  window.show();
+  mainWindow.show();
 
   function loadWindow(file, width, height) {
-    window.loadFile(`${__dirname}/routes/${file}`);
-    window.setSize(width, height, true);
-    window.setMinimumSize(width, height);
-    window.center();
+    mainWindow.loadFile(`${__dirname}/routes/${file}`);
+    mainWindow.setSize(width, height, true);
+    mainWindow.setMinimumSize(width, height);
+    mainWindow.center();
   }
 
-  // Si authtoken existe → login_loading, sinon → login
   loadWindow(
     store.get("authtoken") ? "login_loading.html" : "login.html",
     540,
     670,
   );
 
-  // ── Navigation entre pages ──────────────────────────────────────────────────
+  // ── Navigation ────────────────────────────────────────────────────────────
   ipcMain.handle("main", () => loadWindow("main.html", 1366, 768));
   ipcMain.handle("login", () => loadWindow("login.html", 540, 690));
   ipcMain.handle("loginLoading", () =>
@@ -91,14 +154,14 @@ const createWindow = () => {
   ipcMain.handle("doubleAuth", () => loadWindow("sendsms.html", 610, 602));
   ipcMain.handle("loginCode", () => loadWindow("login.html", 540, 670));
 
-  // ── Changement de route interne (iframe) ────────────────────────────────────
+  // ── Changement de route ───────────────────────────────────────────────────
   ipcMain.handle("changeroute", (e, route) => {
     if (data["currentRoute"] !== route) {
       data["currentRoute"] = route;
 
       if (route === "radio") {
         globalShortcut.register("MediaPlayPause", () => {
-          window.webContents.send(
+          mainWindow.webContents.send(
             "data-change",
             "TriggerNGRadio",
             !data["NGRadioPlaying"],
@@ -108,11 +171,11 @@ const createWindow = () => {
         globalShortcut.unregisterAll();
       }
 
-      window.webContents.send("route", route + ".html");
+      mainWindow.webContents.send("route", route + ".html");
     }
   });
 
-  // ── Store persistant ────────────────────────────────────────────────────────
+  // ── Store persistant ──────────────────────────────────────────────────────
   ipcMain.handle("store", (e, type, value) => {
     store.set(type, value);
     BrowserWindow.getAllWindows().forEach((win) => {
@@ -122,7 +185,7 @@ const createWindow = () => {
     if (type === "lang") data["lang"] = value;
   });
 
-  // ── Données non persistantes ────────────────────────────────────────────────
+  // ── Données non persistantes ──────────────────────────────────────────────
   ipcMain.on("get-data", (event, key) => {
     event.returnValue = data[key];
   });
@@ -131,31 +194,35 @@ const createWindow = () => {
     BrowserWindow.getAllWindows().forEach((win) => {
       win.webContents.send("data-change", key, value);
     });
-    if (key === "NGRadioPlaying" && !hiddenRadioWindow) createRadio();
+    // ✅ createRadio uniquement si pas déjà créée
+    if (
+      key === "NGRadioPlaying" &&
+      (!hiddenRadioWindow || hiddenRadioWindow.isDestroyed())
+    ) {
+      createRadio();
+    }
   });
 
-  // ── Contrôles fenêtre ───────────────────────────────────────────────────────
-  ipcMain.on("WindowMinimize", () => window.minimize());
+  // ── Contrôles fenêtre ─────────────────────────────────────────────────────
+  ipcMain.on("WindowMinimize", () => mainWindow.minimize());
   ipcMain.on("WindowMaximize", () =>
-    window.isMaximized() ? window.unmaximize() : window.maximize(),
+    mainWindow.isMaximized() ? mainWindow.unmaximize() : mainWindow.maximize(),
   );
-  ipcMain.on("WindowClose", () => window.hide());
+  ipcMain.on("WindowClose", () => mainWindow.hide());
 
-  // ── Lien externe (utils.js → getExternalLink) ──────────────────────────────
+  // ── Liens externes ────────────────────────────────────────────────────────
   ipcMain.on("open-external-link", (event, url) => {
     shell.openExternal(url);
   });
 
-  // ── Dialogue dossier (settings.js → browsePath) ─────────────────────────────
+  // ── Dialogue dossier ──────────────────────────────────────────────────────
   ipcMain.handle("dialog:openDirectory", async () => {
-    return dialog.showOpenDialog(window, {
+    return dialog.showOpenDialog(mainWindow, {
       properties: ["openDirectory"],
     });
   });
 
-
-
-  // ── Fenêtre modale ──────────────────────────────────────────────────────────
+  // ── Fenêtre modale ────────────────────────────────────────────────────────
   modalWindow = new BrowserWindow({
     transparent: true,
     show: false,
@@ -176,7 +243,7 @@ const createWindow = () => {
 
   ipcMain.handle("closeModal", () => {
     modalWindow.hide();
-    window.webContents.send("route", "accounts.html");
+    mainWindow.webContents.send("route", "accounts.html");
   });
 
   ipcMain.handle("openModal", (event, key) => {
@@ -206,17 +273,19 @@ const createWindow = () => {
   modalWindow.on("focus", () => modalWindow.setBackgroundColor("#00000000"));
   modalWindow.on("blur", () => modalWindow.setBackgroundColor("#00000000"));
 
-  // ── Déconnexion ─────────────────────────────────────────────────────────────
+  // ── Déconnexion ───────────────────────────────────────────────────────────
   ipcMain.handle("logout", () => {
     ["authtoken", "username", "accounts"].forEach((key) => store.delete(key));
     if (hiddenRadioWindow && !hiddenRadioWindow.isDestroyed()) {
       hiddenRadioWindow.close();
+      hiddenRadioWindow = null;
     }
-    rpc.setActivity({}).catch(console.error);
+    // ✅ On vérifie que RPC est prêt avant d'appeler setActivity
+    if (rpcReady) rpc.setActivity({}).catch(console.error);
     loadWindow("login.html", 540, 670);
   });
 
-  // ── Dialogue ────────────────────────────────────────────────────────────────
+  // ── Dialogue message ──────────────────────────────────────────────────────
   ipcMain.on("show-dialog", (event, args) => {
     dialog
       .showMessageBox({
@@ -230,96 +299,67 @@ const createWindow = () => {
       });
   });
 
-  // ── Vérification des mises à jour ───────────────────────────────────────────
+  // ── Mises à jour ──────────────────────────────────────────────────────────
   ipcMain.on("checkUpdate", () => {
     autoUpdater.checkForUpdatesAndNotify();
   });
 
-  // ── Fixes transparence ──────────────────────────────────────────────────────
-  window.on("focus", () => window.setBackgroundColor("#00000000"));
-  window.on("blur", () => window.setBackgroundColor("#00000000"));
-  window.on("close", (event) => {
+  // ── Discord presence depuis renderer ──────────────────────────────────────
+  ipcMain.on("set-discord-presence", (event, arg) => {
+    if (!rpcReady) return; // ✅ Ne plante pas si Discord est fermé
+    rpc
+      .setActivity({
+        state: arg.state,
+        details: arg.details,
+        startTimestamp: arg.startTimestamp,
+        largeImageKey: arg.largeImageKey,
+        largeImageText: arg.largeImageText,
+        smallImageKey: arg.smallImageKey,
+        smallImageText: arg.smallImageText,
+        instance: arg.instance,
+        buttons: arg.buttons,
+      })
+      .catch(console.error);
+  });
+
+  // ── Fixes transparence ────────────────────────────────────────────────────
+  mainWindow.on("focus", () => mainWindow.setBackgroundColor("#00000000"));
+  mainWindow.on("blur", () => mainWindow.setBackgroundColor("#00000000"));
+  mainWindow.on("close", (event) => {
     if (!app.isQuiting) {
       event.preventDefault();
-      window.hide();
+      mainWindow.hide();
     }
   });
 };
 
-// ── Auto updater ───────────────────────────────────────────────────────────────
+// ── Auto updater ─────────────────────────────────────────────────────────────
 autoUpdater.on("update-available", () => {
-  if (!window) return;
-  window.loadFile(__dirname + "/routes/update.html");
-  window.setSize(450, 150, true);
-  window.resizable = false;
-  window.center();
-  window.setAlwaysOnTop(true, "floating");
-  window.webContents.send("update_available");
+  if (!mainWindow) return;
+  mainWindow.loadFile(__dirname + "/routes/update.html");
+  mainWindow.setSize(450, 150, true);
+  mainWindow.resizable = false;
+  mainWindow.center();
+  mainWindow.setAlwaysOnTop(true, "floating");
+  mainWindow.webContents.send("update_available");
 });
 autoUpdater.on("download-progress", (progressObj) => {
-  if (!window) return;
-  window.webContents.send(
+  if (!mainWindow) return;
+  mainWindow.webContents.send(
     "update_download_progress",
     progressObj.percent.toFixed(2),
   );
 });
 autoUpdater.on("update-downloaded", () => {
-  if (!window) return;
-  window.webContents.send("update_downloaded");
+  if (!mainWindow) return;
+  mainWindow.webContents.send("update_downloaded");
   setTimeout(() => {
     app.isQuiting = true;
     autoUpdater.quitAndInstall();
   }, 5000);
 });
 
-// ── Radio cachée ───────────────────────────────────────────────────────────────
-const createRadio = () => {
-  hiddenRadioWindow = new BrowserWindow({
-    show: false,
-    webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false,
-      devTools: false,
-    },
-  });
-  hiddenRadioWindow.loadFile(`${__dirname}/routes/hiddenradio.html`);
-
-  ipcMain.on("NGRadio-state-changed", () => {
-    if (!hiddenRadioWindow || hiddenRadioWindow.isDestroyed()) {
-      hiddenRadioWindow = new BrowserWindow({
-        show: false,
-        webPreferences: {
-          nodeIntegration: true,
-          contextIsolation: false,
-          devTools: false,
-        },
-      });
-      hiddenRadioWindow.loadFile(__dirname + "/routes/hiddenradio.html");
-    }
-    hiddenRadioWindow.webContents.send("NGRadio-playpause");
-  });
-
-  ipcMain.on("NGRadio-volume", (event, volume) => {
-    hiddenRadioWindow.webContents.send("NGRadio-volume", volume);
-    data.NGRadioVolume = volume;
-  });
-};
-
-// ── Instance unique ────────────────────────────────────────────────────────────
-const gotTheLock = app.requestSingleInstanceLock();
-if (!gotTheLock) {
-  app.quit();
-} else {
-  app.on("second-instance", () => {
-    if (window) {
-      if (window.isMinimized()) window.restore();
-      if (!window.isVisible()) window.show();
-      window.focus();
-    }
-  });
-}
-
-// ── Démarrage ──────────────────────────────────────────────────────────────────
+// ── Démarrage ─────────────────────────────────────────────────────────────────
 app.whenReady().then(async () => {
   // Nettoyer le PID de jeu au démarrage
   if (store.get("GamePID")) {
@@ -331,7 +371,7 @@ app.whenReady().then(async () => {
 
   // Tray
   const tray = new Tray(__dirname + "/images/tray.png");
-  tray.setToolTip("NationsGlory");
+  tray.setToolTip("ReLaunch");
   tray.setContextMenu(
     Menu.buildFromTemplate([
       {
@@ -349,9 +389,37 @@ app.whenReady().then(async () => {
     ]),
   );
   tray.on("click", () => {
-    if (window.isMinimized()) window.restore();
-    if (!window.isVisible()) window.show();
+    if (mainWindow.isMinimized()) mainWindow.restore();
+    if (!mainWindow.isVisible()) mainWindow.show();
   });
+
+  // ── Redirection auth vers API custom ────────────────────────────────────
+  const { API_URL } = require("./js/config");
+  session.defaultSession.webRequest.onBeforeRequest(
+    {
+      urls: [
+        API_URL + "/v2/auth/*",
+        API_URL + "/v2/reauth*",
+        API_URL + "/v2/disconnect*",
+        API_URL + "/v2/send2auth*",
+      ],
+    },
+    (details, callback) => {
+      const newUrl = details.url.replace(
+        "https://authserver.nationsglory.fr",
+        API_URL,
+      );
+      callback({ redirectURL: newUrl });
+    },
+  );
+
+  // Autoriser nmsr.life pour les renders 3D de skins
+  session.defaultSession.webRequest.onBeforeSendHeaders(
+    { urls: ["https://api.nmsr.life/*"] },
+    (details, callback) => {
+      callback({ requestHeaders: details.requestHeaders });
+    },
+  );
 
   // Fix CSP pour Twitch iframes
   session.defaultSession.webRequest.onHeadersReceived(
@@ -363,34 +431,29 @@ app.whenReady().then(async () => {
     },
   );
 
-  // Discord RPC
-  await rpc.login({ clientId }).catch(console.error);
-  rpc.setActivity({}).catch(console.error);
+  // ✅ Discord RPC — ne bloque pas si Discord est fermé
+  try {
+    await rpc.login({ clientId });
+    rpcReady = true;
+    rpc.setActivity({}).catch(console.error);
+    console.log("Discord RPC connecté.");
+  } catch (e) {
+    rpcReady = false;
+    console.warn("Discord RPC non disponible (Discord fermé ?):", e.message);
+  }
 
-  ipcMain.on("set-discord-presence", (event, arg) => {
-    rpc
-      .setActivity({
-        state: arg.state,
-        details: arg.details,
-        startTimestamp: arg.startTimestamp,
-        largeImageKey: arg.largeImageKey,
-        largeImageText: arg.largeImageText,
-        smallImageKey: arg.smallImageKey,
-        smallImageText: arg.smallImageText,
-        instance: arg.instance,
-        buttons: arg.buttons,
-      })
-      .catch(console.error);
-  });
-
-  // Création fenêtre + radio
+  // Création fenêtre
   createWindow();
+  // ✅ createRadio() appelée UNE SEULE FOIS ici, pas dans createWindow
   createRadio();
+
   autoUpdater.checkForUpdatesAndNotify();
 
   if (process.platform === "win32") app.setAppUserModelId(app.name);
 
-  app.on("will-quit", () => rpc.destroy());
+  app.on("will-quit", () => {
+    if (rpcReady) rpc.destroy();
+  });
 
   app.on("before-quit", () => {
     if (store.get("GamePID")) {

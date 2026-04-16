@@ -1,20 +1,45 @@
-    <link rel="stylesheet" type="text/css" href="../style/style.css" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="../style/radio.css" media="screen"/>
-    <section id="background"></section>
-    <article id="radio">
-        <div id="play"><img src="../images/Icon_PlayerPlay.svg" alt="" onclick="togglePlayPause();"/></div>
-        <div id="image"></div>
-        <p id="timeRadio"><span id="elapsed">0:00</span><span id="duration">2:00</span></p>
-        <section>
-            <img src="../images/Icon_VolumeMax.svg" alt=""/>
-            <input type="range" id="volumeSlider" value="10" min="0" max="100" step="0"/>
-        </section>
-        <div id="player"></div>
-        <div id="songRadio">
-            <h1 id="title"></h1>
-            <h2 id="artist"></h2>
-        </div>
-    </article>
-    <script src="../js/functions.js" async></script>
-    <script src="../js/utils.js" async></script>
-    <script src="../js/radio.js" async></script>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="../style/style.css"
+  media="screen"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="../style/radio.css"
+  media="screen"
+/>
+<section id="background"></section>
+<article id="radio">
+  <div id="play">
+    <img
+      src="../images/Icon_PlayerPlay.svg"
+      alt=""
+      onclick="togglePlayPause()"
+    />
+  </div>
+  <div id="image"></div>
+  <p id="timeRadio">
+    <span id="elapsed">0:00</span><span id="duration">2:00</span>
+  </p>
+  <section>
+    <img src="../images/Icon_VolumeMax.svg" alt="" />
+    <input
+      type="range"
+      id="volumeSlider"
+      value="10"
+      min="0"
+      max="100"
+      step="0"
+    />
+  </section>
+  <div id="player"></div>
+  <div id="songRadio">
+    <h1 id="title"></h1>
+    <h2 id="artist"></h2>
+  </div>
+</article>
+<script src="../js/functions.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/radio.js"></script>
